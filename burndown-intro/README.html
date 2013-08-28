@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+</head>
+<body>
+<h1 id="burndown-before-you-burn-out">Burndown Before You Burn Out</h1>
+<div class="figure">
+<img src="https://raw.github.com/danriti/burndown-intro/master/images/logo.png" alt="Logo" />
+</div>
+<p>At Appneta we use an extremely lightweight method to develop software. While it doesn't necessarily map exactly onto one of the <a target="_blank" href="http://en.wikipedia.org/wiki/Scrum_(development)">many</a> <a target="_blank" href="http://en.wikipedia.org/wiki/Kanban_(development)">agile</a> <a target="_blank" href="http://en.wikipedia.org/wiki/Extreme_Programming">methodologies</a>, our process is very much inspired by <a target="_blank" href="http://zachholman.com/talk/how-github-uses-github-to-build-github/">this video</a>.</p>
+<p>Although there are many unique characteristics for each software development methodology, one thing is consistent: the goal of <strong>progress</strong>. Everyone wants to know how a particular project or task is coming along and when it's going to be complete. So even if you don't believe in due dates and delivering to a schedule, it's still useful to know and be able to communicate to others your current progress.</p>
+<p>To aid us on our never-ending quest to know just how awesome we really are, we've developed <a target="_blank" href="http://burndown.io">Burndown</a>, an open source tool to assist in tracking progress of a Github milestone!</p>
+<p>Github is great for source and issue management, but it's a bit lacking for project management. One thing we found ourselves wanting was a burndown chart to help keep track of progress and Burndown made it easy to make sure momentum didn't die on our projects. Harnessing the power of the mighty <a target="_blank" href="http://developer.github.com/v3/">Github API</a>, Burndown provides a dead simple way to generate a <a target="_blank" href="http://en.wikipedia.org/wiki/Burn_down_chart">burndown chart</a> for any Github milestone. This is helpful for tracking both progress and performance, as well as identifying what work remains.</p>
+<div class="figure">
+<img src="https://raw.github.com/danriti/burndown-intro/master/images/good_burndown.png" alt="Progress" />
+</div>
+<p>Example of a burndown chart for <a target="_blank" href="https://github.com/appneta/burndown/issues?milestone=1&amp;page=1&amp;state=open">appneta/burndown</a>. The chart displays created issues versus time, actual work complete (<code>total_issues - closed_issues</code>) versus time, as well as an ideal line to help keep pace.</p>
+<div class="figure">
+<img src="https://raw.github.com/danriti/burndown-intro/master/images/issues.png" alt="Issues" />
+</div>
+<p>We also display the open and closed issues associated with the milestone, along with the gravatars of the issue creator (left) and the issue assignee (right).</p>
+<p>Burndown is built on top of <a target="_blank" href="https://github.com/danriti/rails-github-skeleton">rails-github-skeleton</a>, which makes authenticating with the Github API easy as pie (thanks to <a target="_blank" href="http://www.omniauth.org/">Omniauth</a>). Finally, the front-end is built with both <a target="_blank" href="http://backbonejs.org/">Backbone</a> and <a target="_blank" href="http://code.shutterstock.com/rickshaw/">Rickshaw</a>, because Javascript MVCs and d3 libraries are all the rage these days.</p>
+<p>Burndown is open source, so feel free to use it anywhere you'd like or use our free hosted version over at <a target="_blank" href="http://burndown.io">burndown.io</a>.</p>
+<p>Got feature ideas? Feel free to add an <a target="_blank" href="https://github.com/appneta/burndown/issues">issue</a> or send us a pull request! So what are you waiting for? Jump right in and start burning down today!</p>
+</body>
+</html>
