@@ -1,6 +1,6 @@
 # Burndown Before You Burn Out
 
-![Logo](https://raw.github.com/danriti/moleskine/burndown-intro/master/images/logo.png)
+![Logo](https://raw.github.com/danriti/moleskine/master/burndown-intro/images/logo.png)
 
 At Appneta we use an extremely lightweight method to develop software.  While it
 doesn't necessarily map exactly onto one of the [many][1] [agile][2] [methodologies][3],
@@ -25,14 +25,14 @@ Burndown provides a dead simple way to generate a [burndown chart][7] for any
 Github milestone. This is helpful for tracking both progress and performance,
 as well as identifying what work remains.
 
-![Progress](https://raw.github.com/danriti/moleskine/burndown-intro/master/images/good_burndown.png)
+![Progress](https://raw.github.com/danriti/moleskine/master/burndown-intro/master/images/good_burndown.png)
 
 Example of a burndown chart for [appneta/burndown][13]. The chart displays
 created issues versus time, actual work complete
 (`total_issues - closed_issues`) versus time, as well as an ideal line to help
 keep pace.
 
-![Issues](https://raw.github.com/danriti/moleskine/burndown-intro/master/images/issues.png)
+![Issues](https://raw.github.com/danriti/moleskine/master/burndown-intro/master/images/issues.png)
 
 We also display the open and closed issues associated with the milestone, along
 with the gravatars of the issue creator (left) and the issue assignee (right).
