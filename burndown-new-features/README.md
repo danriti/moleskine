@@ -39,9 +39,13 @@ labels on Github to tag issues for team specific actions (i.e. QA, Test, etc).
 
 Finally, we added some nice UI enhancements to our milestone view:
 
-- List
-- of
-- Enhancements
+![Milestone Updates][11]
+
+1. Set Due Date: a quick link for users with admin access for the repository to
+                 set a due date on the milestone.
+1. Progress Bar: know the exact process percent of your milestone at any time.
+1. Days Open Column: know the length an issue was open and identify long
+                     standing issues that are becoming stagnant.
 
 Got an idea for a new feature? Do you use Burndown to help keep your team on
 track? We'd be happy to hear your ideas or how you use Burndown, so feel free
@@ -57,3 +61,4 @@ to drop us a comment or [create an issue][5]!
 [8]: https://github.com/twbs/bootstrap
 [9]: http://www.youtube.com/watch?v=X7dFMbubxr4
 [10]: https://raw.github.com/danriti/moleskine/master/burndown-new-features/images/filter_by_label.png
+[11]: https://raw.github.com/danriti/moleskine/master/burndown-new-features/images/milestone_updates.png
