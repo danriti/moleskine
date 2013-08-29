@@ -37,15 +37,15 @@ labels on Github to tag issues for team specific actions (i.e. QA, Test, etc).
 
 ## Milestone Enhancements
 
-Finally, we added some nice UI enhancements to our milestone view:
-
-![Milestone Updates][11]
+Finally, we added a few UI enhancements to our milestone view:
 
 1. **Set Due Date**: a quick link for users with admin access for the repository to
                  set a due date on the milestone.
 1. **Progress Bar**: know the exact process percent of your milestone at any time.
 1. **Days Open Column**: know the length an issue was open and identify long
                      standing issues that are becoming stagnant.
+
+![Milestone Updates][11]
 
 Got an idea for a new feature? Do you use Burndown to help keep your team on
 track? We'd be happy to hear your ideas or how you use Burndown, so feel free
