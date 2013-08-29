@@ -20,7 +20,7 @@ your repository. This chart tracks the number of issues that have been
 opened and closed over the past 30 days, regardless of milestone. This is
 useful in determining if your team is making positive traction
 (i.e. `closed issues > opened issues`), especially when it seems like the
-number of issues in your repository never drops.
+number of open issues in your repository never drops.
 
 ![30 Day Summary][7]
 
