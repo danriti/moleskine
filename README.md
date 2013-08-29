@@ -1,4 +1,4 @@
 moleskine
 =========
 
-A collection of my writing for other blogs.
+A collection of my scribbles for other blogs.
