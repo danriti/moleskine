@@ -41,10 +41,10 @@ Finally, we added some nice UI enhancements to our milestone view:
 
 ![Milestone Updates][11]
 
-1. Set Due Date: a quick link for users with admin access for the repository to
+1. **Set Due Date**: a quick link for users with admin access for the repository to
                  set a due date on the milestone.
-1. Progress Bar: know the exact process percent of your milestone at any time.
-1. Days Open Column: know the length an issue was open and identify long
+1. **Progress Bar**: know the exact process percent of your milestone at any time.
+1. **Days Open Column**: know the length an issue was open and identify long
                      standing issues that are becoming stagnant.
 
 Got an idea for a new feature? Do you use Burndown to help keep your team on
