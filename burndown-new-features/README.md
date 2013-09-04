@@ -2,7 +2,7 @@
 
 ![Logo][6]
 
-A few months ago we [annouced][1] [Burndown][2], an open source web application for
+A few months ago we [announced][1] [Burndown][2], an open source web application for
 tracking the progress of Github milestones. For those of you that missed out:
 
 > Harnessing the power of the mighty [Github API][3], Burndown provides a dead
