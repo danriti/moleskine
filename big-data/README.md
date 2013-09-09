@@ -40,3 +40,25 @@
   are only temporary
 
 ## Chapter 2
+
+- The master dataset is the source of truth in your system and cannot withstand
+  corruption
+- The key properties of data are rawness, immutability, and perpetuity
+- If you can, you want to store the rawest data you can get your hands on. The
+  rawer your data, the more questions you can ask of it
+- Create a separate record every time a user's information evolves. To
+  accomplish this, you track each field of user information in a separate table
+- One of the trade offs of the immutable approach is that is uses more storage
+  than a mutable schema
+- Facts are raw data deconstructed into time-stamped, atomic units (they cannot
+  be subdivided further into meaningful components)
+- One benefit of the fact-based model is that the dataset is queryable at any
+  time in its history
+- Graph schemas capture the structure of a dataset stored using the fact-based
+  model
+- Enforceable schemas help guarantee that all required fields are present and
+  ensure all values are of the expected type
+- Use a serialization framework when dealing with enforceable schemas
+- The decisions made surrounding the master dataset determines the kind of
+  analytics you can perform on your data and how you're going to consume that
+  data
