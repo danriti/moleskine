@@ -62,3 +62,22 @@
 - The decisions made surrounding the master dataset determines the kind of
   analytics you can perform on your data and how you're going to consume that
   data
+
+# Chapter 3
+
+- Requirements for data storage depend on how your data is going to be written
+  and how it will be read.
+- Use Hadoop + Pail to kick ass.
+
+# Chapter 4
+
+- You should be linear scalable.
+- MapReduce is bad ass. But use it wisely.
+- The MapReduce paradigm provides the primitives for precomputing query
+  functions across all your data, and Apaache Hadoop is a practical
+  implementation of MapReduce.
+
+# Chapter 5
+
+- Complexity is bad.
+- So far, this is just a tutorial on using JCascalog.
