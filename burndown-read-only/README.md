@@ -1,7 +1,7 @@
 # Burndown Goes Read Only
 
-After Burndown got some [unexpected attention][3] last week, we got
-[feedback][2] from several netizens who wanted to use [Burndown][4] but were
+After [Burndown][4] got some [unexpected attention][3] last week, we got
+[feedback][2] from several netizens who wanted to use Burndown but were
 uncomfortable with the default permissions (access to both private & public
 repositories) because they use a single Github profile for both personal and
 business work.
