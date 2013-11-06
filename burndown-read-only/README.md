@@ -11,12 +11,14 @@ Well Internet, we're listening!
 Burndown now has the ability to let users authenticate against Github and
 limit access to only public repositories (read-only)!
 
-![Burndown Login][4]
+![Burndown Login][1]
 
 So head on over to http://burndown.io and start burning down before you burn
-out!
+out! As always, let us [know][5] if you have any feedback or ideas for improving
+Burndown.
 
 [1]: https://raw.github.com/danriti/moleskine/master/burndown-read-only/images/read-only.png
 [2]: https://github.com/appneta/burndown/pull/46
 [3]: https://twitter.com/paul_irish/status/395414787418370048
 [4]: http://burndown.io
+[5]: https://github.com/appneta/burndown/issues/new
