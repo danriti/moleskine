@@ -6,10 +6,9 @@ uncomfortable with the default permissions (access to both private & public
 repositories) because they use a single Github profile for both personal and
 business work.
 
-Well Internet, we're listening!
-
-Burndown now has the ability to let users authenticate against Github and
-limit access to only public repositories (read-only)!
+Well Internet, we're listening! Burndown now has the ability to let users
+authenticate against Github and limit access to only public repositories
+(read-only)!
 
 ![Burndown Login][1]
 
