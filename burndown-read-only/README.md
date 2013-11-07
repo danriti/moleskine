@@ -19,5 +19,5 @@ Burndown.
 [1]: https://raw.github.com/danriti/moleskine/master/burndown-read-only/images/read-only.png
 [2]: https://github.com/appneta/burndown/pull/46
 [3]: https://twitter.com/paul_irish/status/395414787418370048
-[4]: http://burndown.io
+[4]: http://www.appneta.com/blog/burndown-before-you-burn-out
 [5]: https://github.com/appneta/burndown/issues/new
