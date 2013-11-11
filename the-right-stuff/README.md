@@ -1,7 +1,5 @@
 # The Right Stuff
 
-Breaking the PageSpeed barrier.
-
 I recently had the pleasure to listen to [Ilya Grigorik][1] give a talk at
 Velocity in NYC on [Breaking the 1000ms Mobile Barrier][2].  During the talk,
 Ilya kept using [PageSpeed Insights][3] to demonstrate that several high
@@ -18,9 +16,7 @@ coming back to the following question:
 
 It can't be that hard, right? Well...there is only one way to find out!
 
-## The Experiment
-
-> Can a Bootstrap example template get a perfect PageSpeed score?
+## Breaking the PageSpeed Barrier
 
 To answer this question, I've decided to keep things as simple as possible, yet
 realistic. So I selected the following constraints based on what *I* would
@@ -28,24 +24,26 @@ consider to be a simple website:
 
 1. Use Amazon EC2 to host
 1. Use a m1.small instance running Ubuntu 12.04 64-bit
-1. Use Apache as a webserver with [mod_pagespeed][6].
-1. Use a [Bootstrap example][5] that depends on external CSS and JS
-   (including jQuery) assets.
+1. Use Apache as a webserver with [mod_pagespeed][6]
+1. Use an off the shelf [Bootstrap example][5] that depends on external CSS
+   and JS (including jQuery)
+1. Modify the Bootstrap example to add a single [image][9] (26kb in size)
 
-## The Goals
+### Le Goals
 
 For this experiment, I've decided on the following scoring goals:
 
 1. **Goal**: Match [Google's PageSpeed score][7] (92 Mobile and 98 Desktop)
 2. **Stretch Goal**: Get a perfect score (100 in both Mobile and Desktop)
 
-## The Challenge
+### Going the Distance
 
 Below is a table marking each change and how it effected the PageSpeed score:
 
 |  #  | Commit | Mobile Score | Desktop Score |
 | --- | ------ | ------------ | ------------- |
-| 1 | [Vanilla template][] | XX | XX |
+| 1 | [Bootstrap off the Shelf][8] | 77 | 90 |
+| 2 | [Enable mod_pagespeed][8] | XX | XX |
 
 [1]: http://twitter.com/igrigorik
 [2]: http://velocityconf.com/velocityny2013/public/schedule/detail/30174
@@ -54,3 +52,5 @@ Below is a table marking each change and how it effected the PageSpeed score:
 [5]: http://getbootstrap.com/examples/theme/
 [6]: https://developers.google.com/speed/pagespeed/module/
 [7]: https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fwww.google.com&tab=desktop
+[8]: https://github.com/danriti/bootstrap-pagespeed/commit/4adba0f15af3029d68bda9dd8b69ad8b44752ee6
+[9]: http://en.wikipedia.org/wiki/File:FA-18_Hornet_breaking_sound_barrier_(7_July_1999)_-_filtered.jpg
