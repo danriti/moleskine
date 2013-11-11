@@ -47,8 +47,7 @@ Below is a table marking each change and how it effected the PageSpeed score:
 | 3 | [Minify CSS][8] | 80 | 94 |
 | 4 | [Remove render blocking JS][8] | 91 | 98 |
 | 5 | [Leverage browser caching][8] | 92 | 98 |
-| 6 | [LOLOL][8] | XX | XX |
-| 6 | [LOLOL][8] | XX | XX |
+| 6 | [Remove render blocking CSS][8] | 100 | 100 |
 
 **NOTE**: Any steps that change the Apache configuration assume that you have
           enabled the module and restarted the webserver.
@@ -160,10 +159,11 @@ from our need for speed (and a perfect score). To do so, we're going to attempt
 to leverage an *extremely experimental* technique I learned from
 [Addy Osmani][18] and [Paul Kinlan][17] that goes something like this:
 
-1. Run a [Javascript snippet][19] to detect and list CSS that is "above the
+1. Run a [Javascript bookmarklet][19] to detect and list CSS that is "above the
    fold"
 2. Inline the "above the fold" CSS directly into the HTML
-3. Defer loading the rest of the "below the fold" CSS
+3. Defer loading the rest of the "below the fold" CSS using a simple, yet
+   **non-cross browser** solution by [Paul Irish][20]
 
 Sounds kind of crazy? It is, but so is breaking the sound barrier. And that
 didn't stop Chuck Yeager, so it won't stop us either.
@@ -172,6 +172,28 @@ didn't stop Chuck Yeager, so it won't stop us either.
 
 - Video: [Detecting Critical CSS For Above-The-Fold Content][15]
 - Blog: [Detecting Critical Above-the-fold CSS][16]
+
+```
+ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/styles$ cat bootstrap.css bootstrap-theme.css theme.css > all.css
+ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/styles$ yui-compressor all.css -o all.min.css
+ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/styles$ ls -alh
+total 516K
+drwxrwxr-x 2 ubuntu ubuntu 4.0K Nov 11 04:31 .
+drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 04:29 ..
+-rw-rw-r-- 1 ubuntu ubuntu 134K Nov 11 04:31 all.css
+-rw-rw-r-- 1 ubuntu ubuntu 110K Nov 11 04:31 all.min.css
+-rw-rw-r-- 1 ubuntu ubuntu 118K Nov  9 01:24 bootstrap.css
+-rw-rw-r-- 1 ubuntu ubuntu  96K Nov 11 02:21 bootstrap.min.css
+-rw-rw-r-- 1 ubuntu ubuntu  17K Nov  9 01:24 bootstrap-theme.css
+-rw-rw-r-- 1 ubuntu ubuntu  15K Nov 11 02:21 bootstrap-theme.min.css
+-rw-rw-r-- 1 ubuntu ubuntu  199 Nov  9 01:23 theme.css
+-rw-rw-r-- 1 ubuntu ubuntu  158 Nov 11 02:24 theme.min.css
+```
+
+### Conclusion
+
+State observations, ask questions, and discuss if solutions are actually
+"anti-patterns" (if so, how can they be improved?)
 
 [1]: http://twitter.com/igrigorik
 [2]: http://velocityconf.com/velocityny2013/public/schedule/detail/30174
@@ -191,4 +213,5 @@ didn't stop Chuck Yeager, so it won't stop us either.
 [16]: http://paul.kinlan.me/detecting-critical-above-the-fold-css/
 [17]: https://twitter.com/Paul_Kinlan
 [18]: https://twitter.com/addyosmani
-[19]: https://gist.github.com/PaulKinlan/6283739
+[19]: https://gist.github.com/PaulKinlan/6284142
+[20]: https://plus.google.com/+PaulIrish/posts/Ahn8VkC36nM
