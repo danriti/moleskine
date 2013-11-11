@@ -42,11 +42,12 @@ Below is a table marking each change and how it effected the PageSpeed score:
 
 |  #  | Commit | Mobile Score | Desktop Score |
 | --- | ------ | ------------ | ------------- |
-| 1 | [Bootstrap off the Shelf][8] | 77 | 90 |
+| 1 | [Bootstrap off the shelf][8] | 77 | 90 |
 | 2 | [Enable mod_pagespeed][8] | 80 | 93 |
 | 3 | [Minify CSS][8] | 80 | 94 |
 | 4 | [Remove render blocking JS][8] | 91 | 98 |
-| 5 | [Browser caching][8] | 92 | 98 |
+| 5 | [Leverage browser caching][8] | 92 | 98 |
+| 6 | [LOLOL][8] | XX | XX |
 | 6 | [LOLOL][8] | XX | XX |
 
 **NOTE**: Any steps that change the Apache configuration assume that you have
@@ -86,6 +87,8 @@ we are left with the last optimization.
 
 #### The Fold
 
+Brief explanation of "Above the Fold".
+
 > Eliminate render-blocking JavaScript and CSS in above-the-fold content
 
 > Your page has 1 blocking script resources and 1 blocking CSS resources. This
@@ -95,8 +98,6 @@ we are left with the last optimization.
   waiting for the following resources to load. Try to defer or asynchronously
   load blocking resources, or inline the critical portions of those resources
   directly in the HTML.0
-
-[Optimize CSS Delivery of the following][12]
 
 #### 4. Remove render-blocking Javascript
 
@@ -145,6 +146,33 @@ cache control.
 
 Holy crap, we've matched Google's score in 5 steps!
 
+#### 6. Optimize CSS Delivery
+
+[Optimize CSS Delivery][12]
+
+Unfortunately, none of Google's suggestions would help us out much here. So
+now the only thing left is to remove render blocking CSS.
+
+Wait...what did you just say? CSS is render blocking by definition!
+
+Yes it is, but we're not gonna let something simple like a stylesheet stop us
+from our need for speed (and a perfect score). To do so, we're going to attempt
+to leverage an *extremely experimental* technique I learned from
+[Addy Osmani][18] and [Paul Kinlan][17] that goes something like this:
+
+1. Run a [Javascript snippet][19] to detect and list CSS that is "above the
+   fold"
+2. Inline the "above the fold" CSS directly into the HTML
+3. Defer loading the rest of the "below the fold" CSS
+
+Sounds kind of crazy? It is, but so is breaking the sound barrier. And that
+didn't stop Chuck Yeager, so it won't stop us either.
+
+**NOTE**: For more technical detail, visit the links below:
+
+- Video: [Detecting Critical CSS For Above-The-Fold Content][15]
+- Blog: [Detecting Critical Above-the-fold CSS][16]
+
 [1]: http://twitter.com/igrigorik
 [2]: http://velocityconf.com/velocityny2013/public/schedule/detail/30174
 [3]: https://developers.google.com/speed/pagespeed/insights/
@@ -159,3 +187,8 @@ Holy crap, we've matched Google's score in 5 steps!
 [12]: https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
 [13]: https://developers.google.com/speed/docs/insights/BlockingJS#deferJS
 [14]: https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess#L441-L498
+[15]: http://www.youtube.com/watch?v=CfmUf1_M9lI
+[16]: http://paul.kinlan.me/detecting-critical-above-the-fold-css/
+[17]: https://twitter.com/Paul_Kinlan
+[18]: https://twitter.com/addyosmani
+[19]: https://gist.github.com/PaulKinlan/6283739
