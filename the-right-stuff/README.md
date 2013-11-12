@@ -36,8 +36,8 @@ consider to be a simple website:
 
 #### 1. Bootstrap off the Shelf
 
-To begin, we're simply creating a baseline by testing the off the shelf
-Bootstrap example with a single addition of an image.
+Let's begin by generating a PageSpeed score from the off the shelf Bootstrap
+example. This will act as a baseline for the rest of the test.
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
@@ -60,9 +60,9 @@ Weak. So let's start with some low hanging fruit.
 
 #### 3. Minify CSS
 
-Bootstrap fortunately ships with minified copies of most of it's CSS, however
-`theme.css` does not, so we'll be using the trusty old [yuicompressor][10] to
-get the job done!
+Bootstrap fortunately ships with minified copies of most of it's CSS, with the
+exception of `theme.css`. So we'll be using the trusty old [yuicompressor][10]
+to get the job done!
 
 ```bash
 $ cp bower_components/bootstrap/dist/css/bootstrap.min.css app/styles/
