@@ -4,9 +4,9 @@ I recently had the pleasure to listen to [Ilya Grigorik][1] give a talk at
 Velocity in NYC on [Breaking the 1000ms Mobile Barrier][2].  During the talk,
 Ilya used [PageSpeed Insights][3] to demonstrate that several high
 profile websites had overlooked some very simple and common optimizations and
-ultimately had scored poorly. For the unfamiliar, [Pagespeed Insights][3] is a
-web based tool created by Google that analyzes the content of a web page, then
-generates suggestions to make that page faster.
+resulted in poor PageSpeed scores. For the unfamiliar, [Pagespeed Insights][3]
+is a web based tool created by Google that analyzes the content of a web page,
+then generates suggestions to make that page faster.
 
 After Ilya's talk ended, I started to think more about *why* performance always
 seems to be an afterthought with developers. As I pondered this thought, I kept
@@ -29,12 +29,24 @@ consider to be a simple website:
    and JS (including jQuery)
 1. Modify the Bootstrap example to add a single [image][9] (26kb in size)
 
-**NOTE**: I picked Apache over Nginx simply because I'm more familiar with
-          setting it up and configuring it.
+I picked Apache over Nginx simply because I'm more familiar with setting it up
+and configuring it. I choose the Bootstrap example because I felt it is
+composed of the many elements you'll find on a modern website. These elements
+include several exteral CSS and JS dependencies (3 CSS & 3 JS), a top
+oriented navigation bar, and a decent amount of content. Plus, Bootstrap is
+widely used across the web, so why not look at how we can make it potentially
+faster?
 
 ### Going the Distance
 
-#### 1. Bootstrap off the Shelf
+I broke the experiment into several steps, where I would:
+
+1. Get the current PageSpeed score
+2. Pick a single failed optimization from the list of suggested improvements
+3. Research and implement a change to overcome the failed optimization
+4. Rinse and repeat until success
+
+#### 1. Bootstrap off the shelf
 
 Let's begin by generating a PageSpeed score from the off the shelf Bootstrap
 example. This will act as a baseline for the rest of the test.
