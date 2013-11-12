@@ -2,7 +2,7 @@
 
 I recently had the pleasure to listen to [Ilya Grigorik][1] give a talk at
 Velocity in NYC on [Breaking the 1000ms Mobile Barrier][2].  During the talk,
-Ilya kept using [PageSpeed Insights][3] to demonstrate that several high
+Ilya used [PageSpeed Insights][3] to demonstrate that several high
 profile websites had overlooked some very simple and common optimizations and
 ultimately had scored poorly. For the unfamiliar, [Pagespeed Insights][3] is a
 web based tool created by Google that analyzes the content of a web page, then
@@ -12,7 +12,7 @@ After Ilya's talk ended, I started to think more about *why* performance always
 seems to be an afterthought with developers. As I pondered this thought, I kept
 coming back to the following question:
 
-> How hard is it to get a perfect score with PageSpeed?
+> How hard is it to get a perfect PageSpeed Insights score?
 
 It can't be that hard, right? Well...there is only one way to find out!
 
@@ -29,34 +29,21 @@ consider to be a simple website:
    and JS (including jQuery)
 1. Modify the Bootstrap example to add a single [image][9] (26kb in size)
 
-### Le Goals
-
-For this experiment, I've decided on the following scoring goals:
-
-1. **Goal**: Match [Google's PageSpeed score][7] (92 Mobile and 98 Desktop)
-2. **Stretch Goal**: Get a perfect score (100 in both Mobile and Desktop)
+**NOTE**: I picked Apache over Nginx simply because I'm more familiar with
+          setting it up and configuring it.
 
 ### Going the Distance
 
-Below is a table marking each change and how it effected the PageSpeed score:
-
-|  #  | Commit | Mobile Score | Desktop Score |
-| --- | ------ | ------------ | ------------- |
-| 1 | [Bootstrap off the shelf][21] | 77 | 90 |
-| 2 | [Enable mod_pagespeed][22] | 80 | 93 |
-| 3 | [Minify CSS][23] | 80 | 94 |
-| 4 | [Remove render blocking JS][24] | 91 | 98 |
-| 5 | [Leverage browser caching][25] | 92 | 98 |
-| 6 | [Remove render blocking CSS][26] | 100 | 100 |
-
-**NOTE**: Any steps that change the Apache configuration assume that you have
-          enabled the module and restarted the webserver.
-
 #### 1. Bootstrap off the Shelf
 
-Here we're simply creating a baseline, using the off the shelf Bootstrap
-example with a single modification. Not to shabby to start off with, so let's
-see how we can improve.
+For the first step, we're simply creating a baseline by testing the off
+the shelf Bootstrap example with a single addition.
+
+| Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| ------ | ------------ | ------------- | ---- |
+| [Bootstrap off the shelf][21] | [77][28] | [90][28] | [833 ms][27] |
+
+Not to shabby to start off with, so let's see how we can improve.
 
 #### 2. Enable mod_pagespeed
 
@@ -69,20 +56,28 @@ Weak.
 
 So let's start with some low hanging fruit.
 
+| Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| ------ | ------------ | ------------- | ---- |
+| [Enable mod_pagespeed][22] | [80][29] | [93][29] | [660 ms][30] |
+
 #### 3. Minify CSS
 
 Bootstrap fortunately ships with minified copies of most of it's CSS, however
-`theme.css` does not, so we'll be using the trusty old [yuicompressor][] to
+`theme.css` does not, so we'll be using the trusty old [yuicompressor][10] to
 get the job done!
 
 ```bash
-ubuntu@server:~/git/bootstrap-pagespeed$ cp bower_components/bootstrap/dist/css/bootstrap.min.css app/styles/
-ubuntu@server:~/git/bootstrap-pagespeed$ cp bower_components/bootstrap/dist/css/bootstrap-theme.min.css app/styles/
-ubuntu@server:~/git/bootstrap-pagespeed$ yui-compressor app/styles/theme.css -o app/styles/theme.min.css
+$ cp bower_components/bootstrap/dist/css/bootstrap.min.css app/styles/
+$ cp bower_components/bootstrap/dist/css/bootstrap-theme.min.css app/styles/
+$ yui-compressor app/styles/theme.css -o app/styles/theme.min.css
 ```
 
 This change is very straight forward, but doesn't yield many points. So now
 we are left with the last optimization.
+
+| Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| ------ | ------------ | ------------- | ---- |
+| [Minify CSS][23] | [80][31] | [94][31] | [843 ms][32] |
 
 #### The Fold
 
@@ -113,9 +108,9 @@ files, how can I guarantee that they are loaded in a specific order? Both
 to manually concatenate all the Javascript files (and minify for good order):
 
 ```bash
-ubuntu@server:~/git/bootstrap-pagespeed/app/scripts$ cat jquery.js bootstrap.js holder.js > all.js
-ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/scripts$ yui-compressor all.js -o all.min.js
-ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/scripts$ ls -alh
+$ cat jquery.js bootstrap.js holder.js > all.js
+$ yui-compressor all.js -o all.min.js
+$ ls -alh
 total 476K
 drwxrwxr-x 2 ubuntu ubuntu 4.0K Nov 11 03:06 .
 drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 02:58 ..
@@ -131,6 +126,10 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 02:58 ..
 Holy point increase! Not to mention look how much faster our time to render
 is after this improvement.
 
+| Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| ------ | ------------ | ------------- | ---- |
+| [Remove render blocking JS][24] | [91][33] | [98][33] | [286 ms][34] |
+
 #### 5. Leverage browser caching
 
 As side effect of deferring the loading of Javascript, we are no longer getting
@@ -144,6 +143,10 @@ cache control.
           get served new files.
 
 Holy crap, we've matched Google's score in 5 steps!
+
+| Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| ------ | ------------ | ------------- | ---- |
+| [Leverage browser caching][25] | [92][35] | [98][35] | [231 ms][36] |
 
 #### 6. Optimize CSS Delivery
 
@@ -174,9 +177,9 @@ didn't stop Chuck Yeager, so it won't stop us either.
 - Blog: [Detecting Critical Above-the-fold CSS][16]
 
 ```
-ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/styles$ cat bootstrap.css bootstrap-theme.css theme.css > all.css
-ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/styles$ yui-compressor all.css -o all.min.css
-ubuntu@ip-10-28-140-61:~/git/bootstrap-pagespeed/app/styles$ ls -alh
+$ cat bootstrap.css bootstrap-theme.css theme.css > all.css
+$ yui-compressor all.css -o all.min.css
+$ ls -alh
 total 516K
 drwxrwxr-x 2 ubuntu ubuntu 4.0K Nov 11 04:31 .
 drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 04:29 ..
@@ -189,6 +192,21 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 04:29 ..
 -rw-rw-r-- 1 ubuntu ubuntu  199 Nov  9 01:23 theme.css
 -rw-rw-r-- 1 ubuntu ubuntu  158 Nov 11 02:24 theme.min.css
 ```
+
+| Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| ------ | ------------ | ------------- | ---- |
+| [Remove render blocking CSS][26] | [100][37] | [100][37] | [151 ms][38] |
+
+### Results
+
+|  #  | Commit | Mobile Score | Desktop Score |
+| --- | ------ | ------------ | ------------- |
+| 1 | [Bootstrap off the shelf][21] | 77 | 90 |
+| 2 | [Enable mod_pagespeed][22] | 80 | 93 |
+| 3 | [Minify CSS][23] | 80 | 94 |
+| 4 | [Remove render blocking JS][24] | 91 | 98 |
+| 5 | [Leverage browser caching][25] | 92 | 98 |
+| 6 | [Remove render blocking CSS][26] | 100 | 100 |
 
 ### Conclusion
 
@@ -220,3 +238,15 @@ State observations, ask questions, and discuss if solutions are actually
 [24]: https://github.com/danriti/bootstrap-pagespeed/commit/50e10b6a908d71fa8b79b153c36042a5d29efe1b
 [25]: https://github.com/danriti/bootstrap-pagespeed/commit/a5ac6b1dd9f7e8da3b7d03c4c91c3455a72d434a
 [26]: https://github.com/danriti/bootstrap-pagespeed/commit/ba29bd20ce1f6f539d8e96eb1d2b4737c01ae51f
+[27]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/01.timing.png
+[28]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/01.score.png
+[29]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/02.score.png
+[30]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/02.timing.png
+[31]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/03.score.png
+[32]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/03.timing.png
+[33]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/04.score.png
+[34]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/04.timing.png
+[35]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/05.score.png
+[36]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/05.timing.png
+[37]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.score.png
+[38]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.timing.png
