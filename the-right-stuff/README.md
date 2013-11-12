@@ -36,8 +36,8 @@ consider to be a simple website:
 
 #### 1. Bootstrap off the Shelf
 
-For the first step, we're simply creating a baseline by testing the off
-the shelf Bootstrap example with a single addition.
+To begin, we're simply creating a baseline by testing the off the shelf
+Bootstrap example with a single addition of an image.
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
@@ -47,18 +47,16 @@ Not to shabby to start off with, so let's see how we can improve.
 
 #### 2. Enable mod_pagespeed
 
-For the first change, we're simply going to enable the PageSpeed Apache
+For the first change, we're simply going to enable the Apache PageSpeed
 module and let it do all the hard work for us! Well think again, because
 the default set of filters enabled by just turning on PageSpeed only gives
 us a boost of 3 points for both mobile and desktop.
 
-Weak.
-
-So let's start with some low hanging fruit.
-
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Enable mod_pagespeed][22] | [80][29] | [93][29] | [660 ms][30] |
+
+Weak. So let's start with some low hanging fruit.
 
 #### 3. Minify CSS
 
@@ -72,12 +70,12 @@ $ cp bower_components/bootstrap/dist/css/bootstrap-theme.min.css app/styles/
 $ yui-compressor app/styles/theme.css -o app/styles/theme.min.css
 ```
 
-This change is very straight forward, but doesn't yield many points. So now
-we are left with the last optimization.
-
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Minify CSS][23] | [80][31] | [94][31] | [843 ms][32] |
+
+This change is very straight forward, but doesn't yield many points. So now
+we are left with the last optimization.
 
 #### The Fold
 
@@ -123,12 +121,12 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 02:58 ..
 -rw-rw-r-- 1 ubuntu ubuntu 4.0K Nov  9 01:25 respond.min.js
 ```
 
-Holy point increase! Not to mention look how much faster our time to render
-is after this improvement.
-
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Remove render blocking JS][24] | [91][33] | [98][33] | [286 ms][34] |
+
+Holy point increase! Not to mention look how much faster our time to render
+is after this improvement.
 
 #### 5. Leverage browser caching
 
@@ -142,11 +140,11 @@ cache control.
 **NOTE**: Make sure you're using a [cache busting][] file name scheme so users
           get served new files.
 
-Holy crap, we've matched Google's score in 5 steps!
-
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Leverage browser caching][25] | [92][35] | [98][35] | [231 ms][36] |
+
+Holy crap, we've matched Google's score in 5 steps!
 
 #### 6. Optimize CSS Delivery
 
@@ -196,6 +194,8 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 04:29 ..
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Remove render blocking CSS][26] | [100][37] | [100][37] | [151 ms][38] |
+
+Did you hear the sonic boom?
 
 ### Results
 
