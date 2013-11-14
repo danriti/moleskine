@@ -130,8 +130,9 @@ loading.
 
 Immediately, there is a problem. If I defer the loading of all the Javascript
 files, how can I guarantee that they are loaded in a specific order? Both
-`holder.js` and `bootstrap.js` have a dependency on `jquery.js`, so I'm forced
-to manually concatenate all the Javascript files (and minify for good order):
+`holder.js` and `bootstrap.js` have a dependency on `jquery.js`, and loading
+them out of order will result in broken Javascript. So I'm forced to manually
+concatenate (and minify) all the Javascript files before we defer the loading:
 
 ```bash
 $ cat jquery.js bootstrap.js holder.js > all.js
@@ -149,16 +150,22 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 02:58 ..
 -rw-rw-r-- 1 ubuntu ubuntu 4.0K Nov  9 01:25 respond.min.js
 ```
 
+Now we simply include the defer loading snippet into our HTML and see what
+happens...
+
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Remove render blocking JS][24] | [91][33] | [98][33] | [286 ms][34] |
 
-Holy point increase! Not to mention look how much faster our time to render
-is after this improvement.
+Wow.
+
+Not only did our scores jump considerably, but our time to first render
+(via DOMContentLoaded) has improved significantly! However, it looks like defer
+loading has some side effects, so let's dig deeper.
 
 #### 5. Leverage browser caching
 
-As side effect of deferring the loading of Javascript, we are no longer getting
+A side effect of deferring the loading of Javascript, we are no longer getting
 the automagic browser caching from mod_pagespeed. So sounds like we need to
 get a bit hands on with Apache.
 
