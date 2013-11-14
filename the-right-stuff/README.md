@@ -57,20 +57,26 @@ example. This will act as a baseline for the rest of the test.
 | ------ | ------------ | ------------- | ---- |
 | [Bootstrap off the shelf][21] | [77][28] | [90][28] | [833 ms][27] |
 
-Not to shabby to start off with, so let's see how we can improve.
+So it seems Bootstrap scores much better in desktop then mobile, along with a
+[DOMContentLoaded][39] of 833ms. Not to shabby to start off with, so let's see
+how we can improve.
 
 #### 2. Enable mod_pagespeed
 
-For the first change, we're simply going to enable the Apache PageSpeed
+For the first optimization, we're simply going to enable the Apache PageSpeed
 module and let it do all the hard work for us! Well think again, because
-the default set of filters enabled by just turning on PageSpeed only gives
-us a boost of 3 points for both mobile and desktop.
+enabling PageSpeed with its default set of filters only gives a boost of 3
+points for both mobile and desktop.
+
+![Enable mod_pagespeed score][29]
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Enable mod_pagespeed][22] | [80][29] | [93][29] | [660 ms][30] |
 
-Weak. So let's start with some low hanging fruit.
+Sigh. It looks like we're gonna have to get under the hood and get our hands
+dirty with some good old manual optimizations. So let's start with some low
+hanging fruit.
 
 #### 3. Minify CSS
 
@@ -91,19 +97,27 @@ $ yui-compressor app/styles/theme.css -o app/styles/theme.min.css
 This change is very straight forward, but doesn't yield many points. So now
 we are left with the last optimization.
 
-#### The Fold
+#### Enter The Fold
 
-Brief explanation of "Above the Fold".
+Welcome to The Fold. No no [the band][41], but that imaginary line in a website
+that divides the top 600 pixels of content a user first sees from the rest of
+the content they will eventually scroll to.
 
-> Eliminate render-blocking JavaScript and CSS in above-the-fold content
+![Above the Fold][31]
 
-> Your page has 1 blocking script resources and 1 blocking CSS resources. This
-  causes a delay in rendering your page.
+In the world of The Fold, anything "below the fold" is considered a second-class
+citizen. And according to Google, we're going to eliminate them from blocking
+our need for speed.
 
-> None of the above-the-fold content on your page could be rendered without
-  waiting for the following resources to load. Try to defer or asynchronously
-  load blocking resources, or inline the critical portions of those resources
-  directly in the HTML.0
+So optimizing for above the fold is basically:
+
+1. Prioritize the delivery of any content that is "above the fold". This
+   ensures the minimal amount of time for content to be rendered in the browser,
+   and ultimately *should* make users happy.
+2. Defer everything else, especially anything that will block rendering for
+   "below the fold" content.
+
+This is where things get interesting.
 
 #### 4. Remove render-blocking Javascript
 
@@ -228,7 +242,7 @@ State observations, ask questions, and discuss if solutions are actually
 "anti-patterns" (if so, how can they be improved?)
 
 [1]: http://twitter.com/igrigorik
-[2]: http://velocityconf.com/velocityny2013/public/schedule/detail/30174
+[2]: http://www.youtube.com/watch?v=I4vX-twze9I
 [3]: https://developers.google.com/speed/pagespeed/insights/
 [4]: https://developers.google.com/speed/docs/insights/v1/getting_started
 [5]: http://getbootstrap.com/examples/theme/
@@ -264,3 +278,6 @@ State observations, ask questions, and discuss if solutions are actually
 [36]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/05.timing.png
 [37]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.score.png
 [38]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.timing.png
+[39]: https://developer.mozilla.org/en-US/docs/Web/Reference/Events/DOMContentLoaded
+[40]: http://en.wikipedia.org/wiki/Above_the_fold
+[41]: http://www.thefoldrock.com/
