@@ -46,6 +46,8 @@ I broke the experiment into several steps, where I would:
 3. Research and implement a change to overcome the failed optimization
 4. Rinse and repeat until success
 
+Easy enough, so let's get started!
+
 #### 1. Bootstrap off the shelf
 
 Let's begin by generating a PageSpeed score from the off the shelf Bootstrap
