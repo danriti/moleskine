@@ -121,9 +121,7 @@ This is where things get interesting.
 
 #### 4. Remove render-blocking Javascript
 
-[Remove render-blocking JavaScript][11]
-
-After reading over Google's recommendations for removing render-blocking
+After reading over Google's [recommendations][11] for removing render-blocking
 Javascript, it's clear that we have way to much Javascript to simply inline it
 all, so we will have to use their [inline Javascript snippet][13] to defer the
 loading.
@@ -165,9 +163,9 @@ loading has some side effects, so let's dig deeper.
 
 #### 5. Leverage browser caching
 
-A side effect of deferring the loading of Javascript, we are no longer getting
-the automagic browser caching from mod_pagespeed. So sounds like we need to
-get a bit hands on with Apache.
+As a side effect of deferring the loading of Javascript, we are no longer
+getting the automagic browser caching from mod_pagespeed. So sounds like we
+need to get a bit hands on with Apache.
 
 The HTML Boilerplate has a fantastic [example][14] of expires headers for
 cache control.
