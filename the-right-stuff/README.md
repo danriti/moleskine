@@ -69,14 +69,20 @@ enabling PageSpeed with its default set of filters only gives a boost of 3
 points for both mobile and desktop.
 
 ![Enable mod_pagespeed score][29]
+![Enable mod_pagespeed timing][30]
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Enable mod_pagespeed][22] | [80][29] | [93][29] | [660 ms][30] |
 
-Sigh. It looks like we're gonna have to get under the hood and get our hands
-dirty with some good old manual optimizations. So let's start with some low
-hanging fruit.
+Sigh.
+
+Not much score improvement, but mod_pagespeed did automatically concatenate all
+our CSS and apply cache control to both CSS and JS, so that's kind of nice.
+
+It looks like we're gonna have to get under the hood and get our hands dirty
+with some good old manual optimizations. So let's start with some low hanging
+fruit.
 
 #### 3. Minify CSS
 
