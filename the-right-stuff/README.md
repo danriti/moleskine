@@ -270,7 +270,7 @@ following observations:
   sites, especially those that are built with [Javascript MVC frameworks][50].
 - The defer loading for CSS is definitely **not** "production ready" and
   still needs considerable improvement.
-- As always, Implementing *any* optimization should always be weighed against
+- Implementing *any* optimization should always be weighed against
   the many [established][48] [web performance][46] [best practices][47].
 
 Finally, I can't help but think there are further improvements that can be
