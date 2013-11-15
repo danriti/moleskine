@@ -70,7 +70,7 @@ points for both mobile and desktop.
 
 <img width="400" alt="Enable mod_pagespeed score" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/02.score.png" />
 
-<img width="400" alt="Enable mod_pagespeed timing" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/02.timing.png" />
+<img alt="Enable mod_pagespeed timing" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/02.timing.png" />
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
