@@ -252,10 +252,33 @@ Did you hear the sonic boom?
 | 5 | [Leverage browser caching][25] | [92][35] | [98][35] | [231 ms][36] |
 | 6 | [Remove render blocking CSS][26] | [100][37] | [100][37] | [151 ms][38] |
 
-State observations, ask questions, and discuss if solutions are actually
-"anti-patterns" (if so, how can they be improved?)
+For the given constraints of this experiment, I have been able to achieve a
+perfect PageSpeed score. Over the course of this experiment, I've made the
+following observations:
 
-I choose webserver agnostic approaches to solving problems.
+- PageSpeed optimizations directly result in a improved time to first render.
+  This can have a significant impact for a mobile site.
+- Only installing mod_pagespeed is **not** enough. If anything, it's only the
+  beginning when it comes to tuning performance for your website. It offers an
+  impressive [list of configurable filters][45] that you should read about.
+- Asset concatenation is useful for reducing the number of HTTP requests, DNS
+  lookups, and overall round trip times (RTT).
+- Asset minfication is a must and it's useful for reducing payload size.
+- Browser caching is a must. Seriously, do it.
+- The defer loading for Javascript seems safe to use. However, further
+  experimentation is necessary to determine its effects on Javascript heavy
+  sites, especially those that are built with [Javascript MVC frameworks][50].
+- The defer loading for CSS is definitely **not** "production ready" and
+  still needs considerable improvement.
+- As always, Implementing *any* optimization should always be weighed against
+  the many [established][48] [web performance][46] [best practices][47].
+
+Finally, I can't help but think there are further improvements that can be
+made to my solutions. Thus, I'd like to encourage further discussion on this
+topic by ending on the following question:
+
+> How many of my "solutions" are actually anti-patterns? (If so, how can they
+  be improved?)
 
 [1]: http://twitter.com/igrigorik
 [2]: http://www.youtube.com/watch?v=I4vX-twze9I
@@ -300,3 +323,9 @@ I choose webserver agnostic approaches to solving problems.
 [42]: http://webassets.readthedocs.org/en/latest/expiring.html
 [43]: http://stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring
 [44]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/google.score.png
+[45]: https://developers.google.com/speed/pagespeed/module/config_filters
+[46]: https://developers.google.com/speed/docs/best-practices/rules_intro
+[47]: http://developer.yahoo.com/performance/rules.html
+[48]: http://stevesouders.com/hpws/rules.php
+[49]: http://todomvc.com/
+[50]: http://en.wikipedia.org/wiki/Single-page_application
