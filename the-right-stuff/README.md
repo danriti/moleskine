@@ -185,22 +185,23 @@ need to get a bit hands on with Apache.
 | ------ | ------------ | ------------- | ---- |
 | [Leverage browser caching][25] | [92][35] | [98][35] | [231 ms][36] |
 
-We've only improved our score in mobile, but we're now tied with Google's
+![Google's PageSpeed Score][44]
+
+Only a slight score improvement in mobile, but we're now tied with Google's
 PageSpeed [score][7]!
 
 #### 6. Optimize CSS Delivery
 
-[Optimize CSS Delivery][12]
+Unfortunately, none of Google's [suggestions][12] would help us out much here.
+So now the only thing left is to remove render blocking CSS.
 
-Unfortunately, none of Google's suggestions would help us out much here. So
-now the only thing left is to remove render blocking CSS.
+To frame the situation, external CSS is network bound and the network is slow.
+Thus, we want to remove this dependency so we can render our above the fold
+content as fast as possible.
 
-Wait...what did you just say? CSS is render blocking by definition!
-
-Yes it is, but we're not gonna let something simple like a stylesheet stop us
-from our need for speed (and a perfect score). To do so, we're going to attempt
-to leverage an *extremely experimental* technique I learned from
-[Addy Osmani][18] and [Paul Kinlan][17] that goes something like this:
+To overcome this hurdle, we're going to attempt to leverage an *extremely
+experimental* technique I learned from [Addy Osmani][18] and [Paul Kinlan][17]
+that goes something like this:
 
 1. Run a [Javascript bookmarklet][19] to detect and list CSS that is "above the
    fold"
@@ -208,13 +209,12 @@ to leverage an *extremely experimental* technique I learned from
 3. Defer loading the rest of the "below the fold" CSS using a simple, yet
    **non-cross browser** solution by [Paul Irish][20]
 
-Sounds kind of crazy? It is, but so is breaking the sound barrier. And that
-didn't stop Chuck Yeager, so it won't stop us either.
-
-**NOTE**: For more technical detail, visit the links below:
+**NOTE**: For more technical detail on this method, visit the links below:
 
 - Video: [Detecting Critical CSS For Above-The-Fold Content][15]
 - Blog: [Detecting Critical Above-the-fold CSS][16]
+
+Like before, let's concatenate all our CSS, minify and see what happens.
 
 ```
 $ cat bootstrap.css bootstrap-theme.css theme.css > all.css
@@ -232,6 +232,8 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 04:29 ..
 -rw-rw-r-- 1 ubuntu ubuntu  199 Nov  9 01:23 theme.css
 -rw-rw-r-- 1 ubuntu ubuntu  158 Nov 11 02:24 theme.min.css
 ```
+
+![Perfect PageSpeed Score][37]
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
@@ -263,7 +265,7 @@ I choose webserver agnostic approaches to solving problems.
 [4]: https://developers.google.com/speed/docs/insights/v1/getting_started
 [5]: http://getbootstrap.com/examples/theme/
 [6]: https://developers.google.com/speed/pagespeed/module/
-[7]: https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fwww.google.com&tab=desktop
+[7]: https://developers.google.com/speed/pagespeed/insights/?url=www.google.com
 [9]: http://en.wikipedia.org/wiki/File:FA-18_Hornet_breaking_sound_barrier_(7_July_1999)_-_filtered.jpg
 [10]: http://yui.github.io/yuicompressor/
 [11]: https://developers.google.com/speed/docs/insights/BlockingJS
@@ -299,3 +301,4 @@ I choose webserver agnostic approaches to solving problems.
 [41]: http://www.thefoldrock.com/
 [42]: http://webassets.readthedocs.org/en/latest/expiring.html
 [43]: http://stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring
+[44]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/google.score.png
