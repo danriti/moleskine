@@ -105,22 +105,22 @@ we are left with the last optimization.
 
 #### Enter The Fold
 
-Welcome to The Fold. No no [the band][41], but that imaginary line in a website
+Welcome to The Fold. No not [the band][41], but that imaginary line in a website
 that divides the top 600 pixels of content a user first sees from the rest of
 the content they will eventually scroll to.
 
 ![Above the Fold][31]
 
 In the world of The Fold, anything "below the fold" is considered a second-class
-citizen. And according to Google, we're going to eliminate them from blocking
-our need for speed.
+citizen. And according to Google, they need to be eliminated from blocking our
+need for speed.
 
 So optimizing for above the fold is basically:
 
 1. Prioritize the delivery of any content that is "above the fold". This
    ensures the minimal amount of time for content to be rendered in the browser,
    and ultimately *should* make users happy.
-2. Defer everything else, especially anything that will block rendering for
+2. Defer *everything* else, especially anything that will block rendering for
    "below the fold" content.
 
 This is where things get interesting.
@@ -133,7 +133,7 @@ all, so we will have to use their [inline Javascript snippet][13] to defer the
 loading.
 
 Immediately, there is a problem. If I defer the loading of all the Javascript
-files, how can I guarantee that they are loaded in a specific order? Both
+files, how can I guarantee that they are loaded in order? Both
 `holder.js` and `bootstrap.js` have a dependency on `jquery.js`, and loading
 them out of order will result in broken Javascript. So I'm forced to manually
 concatenate (and minify) all the Javascript files before we defer the loading:
@@ -164,7 +164,7 @@ happens...
 Wow.
 
 Not only did our scores jump considerably, but our time to first render
-(via DOMContentLoaded) has improved significantly! However, it looks like defer
+(DOMContentLoaded) has improved significantly! However, it looks like defer
 loading has some side effects, so let's dig deeper.
 
 #### 5. Leverage browser caching
@@ -173,17 +173,20 @@ As a side effect of deferring the loading of Javascript, we are no longer
 getting the automagic browser caching from mod_pagespeed. So sounds like we
 need to get a bit hands on with Apache.
 
-The HTML Boilerplate has a fantastic [example][14] of expires headers for
-cache control.
+**NOTES**:
 
-**NOTE**: Make sure you're using a [cache busting][] file name scheme so users
-          get served new files.
+- The HTML Boilerplate has a fantastic [example][14] of expires headers for
+  cache control.
+- Make sure you're using a [cache busting][42] file name scheme so users
+  get served new files.
+- You should also read this [article][43] by Steve Souders.
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
 | [Leverage browser caching][25] | [92][35] | [98][35] | [231 ms][36] |
 
-Holy crap, we've matched Google's score in 5 steps!
+We've only improved our score in mobile, but we're now tied with Google's
+PageSpeed [score][7]!
 
 #### 6. Optimize CSS Delivery
 
@@ -252,6 +255,8 @@ Did you hear the sonic boom?
 State observations, ask questions, and discuss if solutions are actually
 "anti-patterns" (if so, how can they be improved?)
 
+I choose webserver agnostic approaches to solving problems.
+
 [1]: http://twitter.com/igrigorik
 [2]: http://www.youtube.com/watch?v=I4vX-twze9I
 [3]: https://developers.google.com/speed/pagespeed/insights/
@@ -264,7 +269,7 @@ State observations, ask questions, and discuss if solutions are actually
 [11]: https://developers.google.com/speed/docs/insights/BlockingJS
 [12]: https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
 [13]: https://developers.google.com/speed/docs/insights/BlockingJS#deferJS
-[14]: https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess#L441-L498
+[14]: https://github.com/h5bp/html5-boilerplate/blob/96d7c99762a0b1a61515cf17b2f172af8fa6674d/.htaccess#L537-L594
 [15]: http://www.youtube.com/watch?v=CfmUf1_M9lI
 [16]: http://paul.kinlan.me/detecting-critical-above-the-fold-css/
 [17]: https://twitter.com/Paul_Kinlan
@@ -292,3 +297,5 @@ State observations, ask questions, and discuss if solutions are actually
 [39]: https://developer.mozilla.org/en-US/docs/Web/Reference/Events/DOMContentLoaded
 [40]: http://en.wikipedia.org/wiki/Above_the_fold
 [41]: http://www.thefoldrock.com/
+[42]: http://webassets.readthedocs.org/en/latest/expiring.html
+[43]: http://stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring
