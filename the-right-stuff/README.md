@@ -109,7 +109,7 @@ Welcome to The Fold. No not [the band][41], but that imaginary line in a website
 that divides the top 600 pixels of content a user first sees from the rest of
 the content they will eventually scroll to.
 
-![Above the Fold][31]
+[Insert Visual Example of the Fold]
 
 In the world of The Fold, anything "below the fold" is considered a second-class
 citizen. And according to Google, they need to be eliminated from blocking our
@@ -123,7 +123,7 @@ So optimizing for above the fold is basically:
 2. Defer *everything* else, especially anything that will block rendering for
    "below the fold" content.
 
-This is where things get interesting.
+Let's get started, shall we?
 
 #### 4. Remove render-blocking Javascript
 
@@ -207,7 +207,7 @@ that goes something like this:
    fold"
 2. Inline the "above the fold" CSS directly into the HTML
 3. Defer loading the rest of the "below the fold" CSS using a simple, yet
-   **non-cross browser** solution by [Paul Irish][20]
+   **not cross browser compatible** solution by [Paul Irish][20]
 
 **NOTE**: For more technical detail on this method, visit the links below:
 
@@ -241,18 +241,15 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 04:29 ..
 
 Did you hear the sonic boom?
 
-### Results
-
-|  #  | Commit | Mobile Score | Desktop Score |
-| --- | ------ | ------------ | ------------- |
-| 1 | [Bootstrap off the shelf][21] | 77 | 90 |
-| 2 | [Enable mod_pagespeed][22] | 80 | 93 |
-| 3 | [Minify CSS][23] | 80 | 94 |
-| 4 | [Remove render blocking JS][24] | 91 | 98 |
-| 5 | [Leverage browser caching][25] | 92 | 98 |
-| 6 | [Remove render blocking CSS][26] | 100 | 100 |
-
 ### Conclusion
+
+| # | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| 1 | [Bootstrap off the shelf][21] | [77][28] | [90][28] | [833 ms][27] |
+| 2 | [Enable mod_pagespeed][22] | [80][29] | [93][29] | [660 ms][30] |
+| 3 | [Minify CSS][23] | [80][31] | [94][31] | [843 ms][32] |
+| 4 | [Remove render blocking JS][24] | [91][33] | [98][33] | [286 ms][34] |
+| 5 | [Leverage browser caching][25] | [92][35] | [98][35] | [231 ms][36] |
+| 6 | [Remove render blocking CSS][26] | [100][37] | [100][37] | [151 ms][38] |
 
 State observations, ask questions, and discuss if solutions are actually
 "anti-patterns" (if so, how can they be improved?)
