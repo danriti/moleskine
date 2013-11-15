@@ -68,8 +68,8 @@ module and let it do all the hard work for us! Well think again, because
 enabling PageSpeed with its default set of filters only gives a boost of 3
 points for both mobile and desktop.
 
-![Enable mod_pagespeed score][29]
-![Enable mod_pagespeed timing][30]
+<img width="400" alt="Enable mod_pagespeed score" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.score.png" />
+<img width="400" alt="Enable mod_pagespeed timing" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.timing.png" />
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
@@ -185,7 +185,7 @@ need to get a bit hands on with Apache.
 | ------ | ------------ | ------------- | ---- |
 | [Leverage browser caching][25] | [92][35] | [98][35] | [231 ms][36] |
 
-![Google's PageSpeed Score][44]
+<img width="400" alt="Google's PageSpeed score" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.score.png" />
 
 Only a slight score improvement in mobile, but we're now tied with Google's
 PageSpeed [score][7]!
@@ -233,7 +233,7 @@ drwxrwxr-x 5 ubuntu ubuntu 4.0K Nov 11 04:29 ..
 -rw-rw-r-- 1 ubuntu ubuntu  158 Nov 11 02:24 theme.min.css
 ```
 
-![Perfect PageSpeed Score][37]
+<img width="400" alt="Perfect PageSpeed score" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/06.score.png" />
 
 | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
 | ------ | ------------ | ------------- | ---- |
