@@ -278,8 +278,8 @@ Finally, I can't help but think there are further improvements that can be
 made to my solutions. Thus, I'd like to encourage further discussion on this
 topic by ending on the following question:
 
-> How many of my "solutions" are actually anti-patterns? (If so, how can they
-  be improved?)
+> How many of my "solutions" are actually anti-patterns? If so, how can they
+  be improved?
 
 [1]: http://twitter.com/igrigorik
 [2]: http://www.youtube.com/watch?v=I4vX-twze9I
