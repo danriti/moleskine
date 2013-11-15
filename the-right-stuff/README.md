@@ -110,7 +110,7 @@ Welcome to The Fold. No not [the band][41], but that imaginary line in a website
 that divides the top 600 pixels of content a user first sees from the rest of
 the content they will eventually scroll to.
 
-[Insert Visual Example of the Fold]
+<img width="500" alt="Visual example of the fold" src="https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/the-fold-example.png" />
 
 In the world of The Fold, anything "below the fold" is considered a second-class
 citizen. And according to Google, they need to be eliminated from blocking our
@@ -329,3 +329,4 @@ topic by ending on the following question:
 [47]: http://developer.yahoo.com/performance/rules.html
 [48]: http://stevesouders.com/hpws/rules.php
 [49]: http://todomvc.com/
+[50]: https://raw.github.com/danriti/moleskine/master/the-right-stuff/images/the-fold-example.png
