@@ -267,7 +267,7 @@ following observations:
 - Browser caching is a must. Seriously, do it.
 - The defer loading for Javascript seems safe to use. However, further
   experimentation is necessary to determine its effects on Javascript heavy
-  sites, especially those that are built with [Javascript MVC frameworks][50].
+  sites, especially those that are built with [Javascript MVC frameworks][49].
 - The defer loading for CSS is definitely **not** "production ready" and
   still needs considerable improvement.
 - Implementing *any* optimization should always be weighed against
@@ -328,4 +328,3 @@ topic by ending on the following question:
 [47]: http://developer.yahoo.com/performance/rules.html
 [48]: http://stevesouders.com/hpws/rules.php
 [49]: http://todomvc.com/
-[50]: http://en.wikipedia.org/wiki/Single-page_application
