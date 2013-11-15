@@ -243,7 +243,17 @@ Did you hear the sonic boom?
 
 ### Conclusion
 
-| # | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+|  #  | Commit | Mobile Score | Desktop Score |
+| --- | ------ | ------------ | ------------- |
+| 1 | [Bootstrap off the shelf][21] | 77 | 90 |
+| 2 | [Enable mod_pagespeed][22] | 80 | 93 |
+| 3 | [Minify CSS][23] | 80 | 94 |
+| 4 | [Remove render blocking JS][24] | 91 | 98 |
+| 5 | [Leverage browser caching][25] | 92 | 98 |
+| 6 | [Remove render blocking CSS][26] | 100 | 100 |
+
+|  #  | Commit | Mobile Score | Desktop Score | DOMContentLoaded |
+| --- | ------ | ------------ | ------------- | ---------------- |
 | 1 | [Bootstrap off the shelf][21] | [77][28] | [90][28] | [833 ms][27] |
 | 2 | [Enable mod_pagespeed][22] | [80][29] | [93][29] | [660 ms][30] |
 | 3 | [Minify CSS][23] | [80][31] | [94][31] | [843 ms][32] |
