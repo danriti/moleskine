@@ -17,7 +17,8 @@ The TraceView Beta is free to the public. Tiered plans will be announced at the
 end of the Beta and a free tier will still be available if you're on a tight
 budget.
 
-So what are you waiting for? Get started tracing on Heroku today!
+So what are you waiting for? Get started tracing on Heroku today! As always,
+feel free to drop us some [feedback][3].
 
 - [X] application performance insight
 - [X] supports only ruby
@@ -25,6 +26,8 @@ So what are you waiting for? Get started tracing on Heroku today!
 - [X] beta is free and your account will continue to be free after the beta
 - [X] only available as the project plan
 - [X] plans will be announced at the end of beta
+- [X] feedback?
 
 [1]: https://devcenter.heroku.com/articles/traceview
-[2]: https://www.heroku.com/
+[2]: https://www.heroku.com
+[3]: https://support.tv.appneta.com
