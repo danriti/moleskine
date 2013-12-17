@@ -9,7 +9,7 @@ def so_slow(bar):
     return bar
 
 @profile
-def its_time_for_the_calulator(foo):
+def its_time_for_the_calculator(foo):
     """ It's time for the calculator. """
     if not isinstance(foo, int):
         return None
@@ -27,7 +27,7 @@ def its_time_for_the_calulator(foo):
     return None
 
 def main():
-    print its_time_for_the_calulator(100000)
+    print its_time_for_the_calculator(100000)
 
 if __name__ == "__main__":
     main()
