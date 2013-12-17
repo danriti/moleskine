@@ -55,12 +55,12 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     26         1            0      0.0      0.0      return None
 ```
 
-Wow.
+Just like that, line-by-line profiled output!
 
-Analyzing the `line_profiler` output by looking at the **Time** and **% Time**
-columns, you can clearly see that line 10 is taking the most time. So let's go
-ahead and simply add the `@profile` decorator to the `so_slow` function and
-re-run:
+We can quickly analyze the `line_profiler` output by looking at the "**Time**"
+and "**% Time**" columns, where you can clearly see that line 10 is taking the
+most time. So let's go ahead and simply add the `@profile` decorator to the
+`so_slow` function and re-run:
 
 ```bash
 $ kernprof.py -l -v example.py
@@ -104,6 +104,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     26
     27         1            1      1.0      0.0      return None
 ```
+
+And just like that, you can surgically step through your programs and get
+fast and actionable profiling information with very little overhead!
 
 [1]: http://docs.python.org/2/library/profile.html#module-cProfile
 [2]: http://en.wikipedia.org/wiki/Profiling_(computer_programming)
