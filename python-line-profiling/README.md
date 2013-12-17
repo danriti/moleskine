@@ -15,13 +15,14 @@ ahead and install it in your virtual environment:
 $ pip install line_profiler
 ```
 
-For demonstration purposes, I created this [example program][6] which includes
+For demonstration purposes, I created this [example script][6] which includes
 an intentionally slow function to show off the `line_profiler` output. After
-you've looked over the example program, let's assume we want to profile the
+you've looked over the example script, let's assume we want to profile the
 `its_time_for_the_calculator` function.
 
 To do so, all you have to do is add a `@profile` [decorator][8] above the
-`its_time_for_the_calculator` function like [this][7]. Now we run the program:
+`its_time_for_the_calculator` function like [this][7]. Then execute the example
+with the `kernprof.py` script:
 
 
 ```bash
