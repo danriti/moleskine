@@ -20,8 +20,8 @@ an intentionally slow function to show off the `line_profiler` output. After
 you've looked over the example program, let's assume we want to profile the
 `its_time_for_the_calculator` function.
 
-To do so, all you have to do is add a `@profile` [decorator][8] above the method
-like [this][7]. Now we run the program:
+To do so, all you have to do is add a `@profile` [decorator][8] above the
+`its_time_for_the_calculator` function like [this][7]. Now we run the program:
 
 
 ```bash
@@ -111,10 +111,10 @@ to spot that the real problem lies on `line 8`, where I included the call to
 the `sleep` function.
 
 Taking it all in, `line_profiler` enables you to surgically step through your
-programs and get fast and actionable profiling information all by just adding
+code and get fast and actionable profiling information all by just adding
 a simple decorator. Not only is the `line_profiler` easy to use, but it's
-information is easy to digest and this allows developers to react and diagnose
-performance problems with improved accuracy.
+profiling information is easy to digest and will empower developers to
+react and diagnose performance problems with improved accuracy.
 
 [1]: http://docs.python.org/2/library/profile.html#module-cProfile
 [2]: http://en.wikipedia.org/wiki/Profiling_(computer_programming)
