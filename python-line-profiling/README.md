@@ -12,7 +12,7 @@ The `line_profiler` is not part of the standard python library, so let's go
 ahead and install it in your virtual environment:
 
 ```bash
-$ pip install line_profiler
+[driti@ubuntu ]$ pip install line_profiler
 ```
 
 For demonstration purposes, I created this [example script][6] which includes
@@ -26,7 +26,7 @@ with the `kernprof.py` script:
 
 
 ```bash
-[driti@ubuntu]$ kernprof.py -l -v example.py
+[driti@ubuntu ]$ kernprof.py -l -v example.py
 None
 Wrote profile results to example.py.lprof
 Timer unit: 1e-06 s
@@ -64,7 +64,7 @@ long time. So let's go ahead and also add the `@profile` decorator to the
 `so_slow` function and re-run:
 
 ```bash
-[driti@ubuntu]$ kernprof.py -l -v example.py
+[driti@ubuntu ]$ kernprof.py -l -v example.py
 None
 Wrote profile results to example.py.lprof
 Timer unit: 1e-06 s
@@ -122,6 +122,6 @@ react and diagnose performance problems with improved accuracy.
 [3]: http://pythonhosted.org/line_profiler/
 [4]: http://docs.python.org/2/library/profile.html#profile.Profile
 [5]: http://en.wikipedia.org/wiki/KISS_principle
-[6]: https://gist.github.com/danriti
-[7]: https://gist.github.com/danriti
+[6]: https://gist.github.com/danriti/8015889
+[7]: https://gist.github.com/danriti/8015889/4455ae3e0dd7493ecc6ef9c7b6cf8aeefccd470e#file-example-py-L10
 [8]: https://wiki.python.org/moin/PythonDecorators#What_is_a_Decorator
