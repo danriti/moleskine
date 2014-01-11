@@ -1,22 +1,26 @@
 # Pageguide x Bower
 
+![Bower logo][5]
+
 What happens when you take Pageguide, our open source interactive visual guide
 to elements on web pages and combine it with Bower, a package manager for the
 web?
 
-You get a whole lot of awesome.
-
-![Bower logo][5]
+```
+$ bower install pageguide
+```
 
 For the unfamiliar, [Bower][2] is a package manager for the web. It provides
 an easy way to manage front-end packages (think [jQuery][6], [d3][7],
 [bootstrap][8], etc) for any project.
 
-This means that you
+So you now have all the following options when getting started with Pageguide:
 
-* Install with [Bower](http://bower.io/): `bower install pageguide`
-* Clone the repo: `git clone https://github.com/tracelytics/pageguide.git`
-* Download the latest [release](https://github.com/tracelytics/pageguide/releases)
+- Install with [Bower](http://bower.io/): `bower install pageguide`
+- Clone the repo: `git clone https://github.com/tracelytics/pageguide.git`
+- Download the latest [release](https://github.com/tracelytics/pageguide/releases)
+
+Other points to talk about:
 
 - releases?
 
