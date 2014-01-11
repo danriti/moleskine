@@ -20,7 +20,7 @@ So you now have all the following options for getting started with Pageguide:
 - Clone the repo: `git clone https://github.com/tracelytics/pageguide.git`
 - Download the latest [release][9]
 
-<insert conclusion here>
+So what are you waiting for?
 
 Other points to talk about:
 
