@@ -2,8 +2,8 @@
 
 ![Bower logo][5]
 
-What happens when you take Pageguide, our open source interactive visual guide
-to elements on web pages and combine it with Bower, a package manager for the
+What happens when you take [Pageguide][3], our open source interactive visual guide
+to elements on web pages and combine it with [Bower][2], a package manager for the
 web?
 
 ```
@@ -14,11 +14,13 @@ For the unfamiliar, [Bower][2] is a package manager for the web. It provides
 an easy way to manage front-end packages (think [jQuery][6], [d3][7],
 [bootstrap][8], etc) for any project.
 
-So you now have all the following options when getting started with Pageguide:
+So you now have all the following options for getting started with Pageguide:
 
 - Install with [Bower](http://bower.io/): `bower install pageguide`
 - Clone the repo: `git clone https://github.com/tracelytics/pageguide.git`
-- Download the latest [release](https://github.com/tracelytics/pageguide/releases)
+- Download the latest [release][9]
+
+<insert conclusion here>
 
 Other points to talk about:
 
@@ -32,3 +34,4 @@ Other points to talk about:
 [6]: https://github.com/jquery/jquery
 [7]: https://github.com/mbostock/d3
 [8]: https://github.com/twbs/bootstrap
+[9]: https://github.com/tracelytics/pageguide/releases
