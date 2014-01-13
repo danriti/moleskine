@@ -10,21 +10,21 @@ web?
 $ bower install pageguide
 ```
 
-For the unfamiliar, [Bower][2] is a package manager for the web. It provides
-an easy way to manage front-end packages (think [jQuery][6], [d3][7],
-[bootstrap][8], etc) for any project.
+Oh yeah!
 
-So you now have all the following options for getting started with Pageguide:
+For the unfamiliar, [Bower][2] is a package manager for client-side libraries,
+assets, and frameworks. Bower isn't just for JavaScript libraries, but you can
+also find a large offering of other components (stylesheets, images, fonts, etc)
+neatly packaged in its repository. Check out the [tutorial][10] for installing
+and using Bower.
+
+When getting started with Pageguide, you now have the following options:
 
 - Install with [Bower](http://bower.io/): `bower install pageguide`
 - Clone the repo: `git clone https://github.com/tracelytics/pageguide.git`
 - Download the latest [release][9]
 
-So what are you waiting for?
-
-Other points to talk about:
-
-- releases?
+Insert some witty closing statement?
 
 [1]: http://sindresorhus.com/bower-components/#!/search/pageguide
 [2]: http://bower.io/
@@ -35,3 +35,4 @@ Other points to talk about:
 [7]: https://github.com/mbostock/d3
 [8]: https://github.com/twbs/bootstrap
 [9]: https://github.com/tracelytics/pageguide/releases
+[10]: http://bower.io/#installing-bower
