@@ -73,6 +73,11 @@ And just click on the annotation to toggle it:
 
 ![toggle annotation information][12]
 
+Looks like the overhead of deployment caused a short increase in server latency,
+but performance clearly levels out once the new dynos are fully up and running.
+Thus, I'm able to conclude that my "empty commit" code change has had no
+negative performance impact on the performance of my application.
+
 Correlating application performance changes with deployments couldn't be easier.
 
 [1]: http://www.appneta.com/blog/traceview-beta-heroku/
