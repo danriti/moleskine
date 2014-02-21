@@ -3,8 +3,8 @@
 To help understand the correlation between system events and performance trends,
 TraceView provides the ability to log arbitrary events using it's
 [Annotations API][2]. In this tutorial, we will demonstrate how we can leverage
-Heroku's [Deploy Hooks][3] add-on to create deployment annotations in TraceView
-every time you push new code to Heroku.
+Heroku's [Deploy Hooks][3] add-on to automatically create deployment annotations
+in TraceView every time you push new code to Heroku.
 
 **NOTE**: This tutorial assumes that you are:
 
@@ -12,8 +12,8 @@ every time you push new code to Heroku.
 - Have the [Heroku CLI][8] installed
 
 To begin, you're going to need your **TraceView Access** (API) key. Grab this
-by navigating to the *Organization Overview* page (in the TraceView navigation
-menu: Settings -> Overview). Please note that you *must* be a TraceView
+by navigating to the **Organization Overview** page (in the TraceView navigation
+menu: `Settings -> Overview`). Please note that you **must** be a TraceView
 administrator to access this page in the application.
 
 Next, let's navigate to where our Heroku application repository lives on our
@@ -75,7 +75,8 @@ Now just click on the annotation to toggle the display of information:
 
 ![toggle annotation information][12]
 
-Correlating performance changes with deployments couldn't be easier.
+Correlating changes in your applications performance with deployments couldn't
+be easier.
 
 [1]: http://www.appneta.com/blog/traceview-beta-heroku/
 [2]: http://dev.appneta.com/docs/api-v2/annotations.html
