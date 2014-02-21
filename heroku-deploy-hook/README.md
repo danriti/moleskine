@@ -64,8 +64,8 @@ To git@heroku.com:megaurl.git
 ```
 
 At the end of the log, you can see that Heroku has scheduled the the deploy
-hook. Thus, deployment annotations will appear at the top of *all* your TraceView
-application performance visualizations:
+hook. Thus, deployment annotations will now appear at the top of *all* your
+TraceView application performance visualizations:
 
 ![a wild annotation appears][11]
 
@@ -73,8 +73,7 @@ And just click on the annotation to toggle it:
 
 ![toggle annotation information][12]
 
-Correlating changes in your applications performance with deployments couldn't
-be easier.
+Correlating application performance changes with deployments couldn't be easier.
 
 [1]: http://www.appneta.com/blog/traceview-beta-heroku/
 [2]: http://dev.appneta.com/docs/api-v2/annotations.html
