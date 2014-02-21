@@ -1,9 +1,9 @@
-# Heroku Deploy Hook
+# Logging Heroku Deployments in TraceView
 
 To help understand the correlation between system events and performance trends,
 TraceView provides the ability to log arbitrary events using it's
 [Annotations API][2]. In this tutorial, we will demonstrate how we can leverage
-Heroku's [Deploy Hooks][3] add-on to automatically create deployment annotations
+Heroku's [Deploy Hooks][3] add-on to automatically log deployment annotations
 in TraceView every time you push new code to Heroku.
 
 **NOTE**: This tutorial assumes that you are:
