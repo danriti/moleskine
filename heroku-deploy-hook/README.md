@@ -13,11 +13,12 @@ in TraceView every time you push new code to Heroku.
 
 To begin, you're going to need your **TraceView Access** (API) key. Grab this
 by navigating to the **Organization Overview** page (in the TraceView navigation
-menu: `Settings -> Overview`). Please note that you **must** be a TraceView
+menu: `Settings => Overview`). Please note that you **must** be a TraceView
 administrator to access this page in the application.
 
 Next, let's navigate to where our Heroku application repository lives on our
-local file system:
+local file system. For this example we'll be using [MegaURL][13], an URL
+amplifier:
 
 ```bash
 $ cd /home/dan/dev/megaurl
@@ -90,3 +91,4 @@ be easier.
 [10]: http://en.wikipedia.org/wiki/Percent-encoding
 [11]: https://raw2.github.com/danriti/moleskine/master/heroku-deploy-hook/images/annotation_hover.png
 [12]: https://raw2.github.com/danriti/moleskine/master/heroku-deploy-hook/images/annotation_display.png
+[13]: http://megaurl.co
