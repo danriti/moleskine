@@ -1,17 +1,27 @@
 # Meet python-traceview: A library for accessing the TraceView API
 
 Not to long ago, we introduced the [TraceView Data API][1], which exposes high
-level metrics and performance data related to your TraceView account.  For the
-unfamiliar, this means you access to [server latency timeseries][5],
-[error rates][6], and even [browsers used by end users][7].
+level metrics and performance data related to your TraceView account via a
+[RESTful][9] API. For the unfamiliar, this means you access to
+[server latency timeseries][5], [error rates][6], and even
+[browsers used by end users][7].
 
 In an effort to make accessing the Data API even easier, I have a created
 [python-traceview][2], a Python library for easy access to the TraceView Data
 API!
 
-## Stop curling, Start Building
+## Installation
 
-Accessing information from TraceView is very simple.
+To install python-traceview, simply:
+
+```bash
+$ pip install python-traceview
+```
+
+If you don't have Python installed, I recommend this [guide][10] for
+installation instructions and best practices.
+
+## Quick Start
 
 Begin by importing the ``traceview`` module:
 
@@ -19,15 +29,15 @@ Begin by importing the ``traceview`` module:
 >>> import traceview
 ```
 
-Now, let's initialize a TraceView object using your TraceView access (API) key.
-You can find this key on the **Organization Overview** page in TraceView:
+Now, let's initialize a `TraceView` object using your TraceView access (API)
+key. You can find this key on the **Organization Overview** page in TraceView:
 
 ```python
 >>> tv = traceview.TraceView('API KEY HERE')
 ```
 
-Now, we have a :py:class:`TraceView <traceview.TraceView>` object called ``tv``.
-We can get all the information we need from this object.
+Now, we have a `TraceView` object called ``tv``. We can get all the information
+we need from this object.
 
 For example, let's get all available applications setup within your TraceView
 account:
@@ -46,10 +56,17 @@ application:
 ```
 
 TraceView has traced 2746 requests in the last hour, with an average latency of
-213ms. That’s all well and good, but it’s also only the start of what information you
-can get from TraceView.
+213ms. That’s all well and good, but let's show off the power of working with
+your data in Python:
+
+```python
+>>> tv.server.latency_series('Default')
+{u'fields': u'timestamp,volume,avg_latency', u'items': [[1399089120.0, 27.0, 226074.07407407407], ...]}
+```
 
 ## Conclusion
+
+Supports Python 2.7, 3.2, 3.3, 3.4
 
 Read the [documentation][3], file an [issue][8], or leave a comment on what
 other information you'd like to see available via the Data API!
@@ -62,3 +79,5 @@ other information you'd like to see available via the Data API!
 [6]: http://dev.appneta.com/docs/api-v2/errors.html#error-rate
 [7]: http://dev.appneta.com/docs/api-v2/discovery.html#browsers
 [8]: https://github.com/danriti/python-traceview/issues/new
+[9]: http://en.wikipedia.org/wiki/Representational_state_transfer
+[10]: http://docs.python-guide.org/en/latest/dev/virtualenvs/
