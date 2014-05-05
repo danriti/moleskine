@@ -57,12 +57,48 @@ application:
 
 TraceView has traced 2746 requests in the last hour, with an average latency of
 213ms. That’s all well and good, but let's show off the power of working with
-your data in Python:
+your data in Python.
+
+Let's examine what application layers are available in the `Default`
+application:
 
 ```python
->>> tv.server.latency_series('Default')
-{u'fields': u'timestamp,volume,avg_latency', u'items': [[1399089120.0, 27.0, 226074.07407407407], ...]}
+>>> tv.layers('Default')
+[u'PHP', u'cURL', u'file_get_contents', u'lighttpd', u'php_mysql', u'php_mysqli']
 ```
+
+Using the powerful [matplotlib][11] library, let's write a short script for
+creating a graph of the `PHP` layer's latency over the past week:
+
+```python
+from datetime import datetime
+
+import matplotlib.pyplot as plt
+import traceview
+
+tv = traceview.TraceView('API KEY HERE')
+results = tv.server.latency_series(app='Default', layer='PHP', time_window='week')
+
+# convert timestamps to datetime objects
+dates = [datetime.utcfromtimestamp(i[0]) for i in results['items']]
+
+# convert average latency to milliseconds (divide by 1000)
+php_average_latency = []
+for item in results['items']:
+    average_latency = item[2]
+    if average_latency:
+        php_average_latency.append(average_latency / 1000)
+    else:
+        php_average_latency.append(0)
+
+plt.figure(figsize=(12, 5), dpi=80)
+plt.plot(dates, php_average_latency)
+plt.ylabel('Average Latency (milliseconds)')
+plt.title('PHP Average Latency - by Week')
+plt.savefig('latency.png')
+```
+
+![php average latency by week][11]
 
 ## Conclusion
 
@@ -81,3 +117,5 @@ other information you'd like to see available via the Data API!
 [8]: https://github.com/danriti/python-traceview/issues/new
 [9]: http://en.wikipedia.org/wiki/Representational_state_transfer
 [10]: http://docs.python-guide.org/en/latest/dev/virtualenvs/
+[11]: http://matplotlib.org/
+[12]: https://raw.githubusercontent.com/danriti/moleskine/master/python-traceview/images/latency.png
