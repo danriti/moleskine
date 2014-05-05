@@ -98,7 +98,7 @@ plt.title('PHP Average Latency - by Week')
 plt.savefig('latency.png')
 ```
 
-![php average latency by week][11]
+![php average latency by week][12]
 
 ## Conclusion
 
