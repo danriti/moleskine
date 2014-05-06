@@ -7,13 +7,13 @@ level metrics and performance data related to your TraceView account via a
 [browsers used by end users][7].
 
 In an effort to make accessing the Data API even easier, I have a created
-[python-traceview][2], a Python library for easy access to the TraceView Data
-API!
+[python-traceview][2], an open source Python library for easy access to the
+TraceView Data API!
 
 ## Installation
 
-With support for Python 2.7, 3.2, 3.3, and 3.4, install python-traceview with
-your favorite version of python by simply:
+With support for Python 2.7, 3.2, 3.3, and 3.4, install **python-traceview**
+by simply:
 
 ```bash
 $ pip install python-traceview
@@ -106,9 +106,9 @@ if __name__ == '__main__':
 
 ## Conclusion
 
-So that's just the tip of the iceberg. For more inforamtion, check out the
-[documentation][3], file an [issue][8], or leave a comment on what other
-information you'd like to see available via the Data API!
+For more inforamtion, check out the [documentation][3], file an [issue][8], or
+leave a comment on what other information you'd like to see available via the
+Data API!
 
 [1]: http://www.appneta.com/blog/data-api-for-web-application-monitoring/
 [2]: https://github.com/danriti/python-traceview
