@@ -66,9 +66,8 @@ TraceView has traced 2746 requests in the last hour, with an average latency of
 ```
 
 Finally, let's look at a more advanced example. Using the powerful
-[matplotlib][11] library, let's create a [script][13] for graphing `PHP` layer's
-latency over the past week:
-
+[matplotlib][11] library, let's create a [script][13] for graphing the average
+latency of the `PHP` layer over the past week:
 
 ```python
 from datetime import datetime
