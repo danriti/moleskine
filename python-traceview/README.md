@@ -106,7 +106,7 @@ if __name__ == '__main__':
 
 ## Conclusion
 
-For more inforamtion, check out the [documentation][3], file an [issue][8], or
+For more information, check out the [documentation][3], create an [issue][8], or
 leave a comment on what other information you'd like to see available via the
 Data API!
 
