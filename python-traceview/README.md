@@ -12,7 +12,8 @@ API!
 
 ## Installation
 
-To install python-traceview, simply:
+With support for Python 2.7, 3.2, 3.3, and 3.4, install python-traceview with
+your favorite version of python by simply:
 
 ```bash
 $ pip install python-traceview
@@ -56,19 +57,18 @@ application:
 ```
 
 TraceView has traced 2746 requests in the last hour, with an average latency of
-213ms. That’s all well and good, but let's show off the power of working with
-your data in Python.
-
-Let's examine what application layers are available in the `Default`
-application:
+213ms. Not bad, now let's examine what application layers are available in the
+`Default` application:
 
 ```python
 >>> tv.layers('Default')
 [u'PHP', u'cURL', u'file_get_contents', u'lighttpd', u'php_mysql', u'php_mysqli']
 ```
 
-Using the powerful [matplotlib][11] library, we can easily create a script for
-graphing `PHP` layer's latency over the past week:
+Finally, let's look at a more advanced example. Using the powerful
+[matplotlib][11] library, let's create a [script][13] for graphing `PHP` layer's
+latency over the past week:
+
 
 ```python
 from datetime import datetime
@@ -83,12 +83,12 @@ def main():
     # convert timestamps to datetime objects
     dates = [datetime.utcfromtimestamp(i[0]) for i in results['items']]
 
-    # convert average latency to milliseconds (divide by 1000)
+    # handle the php average latency
     php_average_latency = []
     for item in results['items']:
         average_latency = item[2]
         if average_latency:
-            php_average_latency.append(average_latency / 1000)
+            php_average_latency.append(average_latency / 1000) # convert to milliseconds
         else:
             php_average_latency.append(0)
 
@@ -106,10 +106,9 @@ if __name__ == '__main__':
 
 ## Conclusion
 
-Supports Python 2.7, 3.2, 3.3, 3.4
-
-Read the [documentation][3], file an [issue][8], or leave a comment on what
-other information you'd like to see available via the Data API!
+So that's just the tip of the iceberg. For more inforamtion, check out the
+[documentation][3], file an [issue][8], or leave a comment on what other
+information you'd like to see available via the Data API!
 
 [1]: http://www.appneta.com/blog/data-api-for-web-application-monitoring/
 [2]: https://github.com/danriti/python-traceview
@@ -123,3 +122,4 @@ other information you'd like to see available via the Data API!
 [10]: http://docs.python-guide.org/en/latest/dev/virtualenvs/
 [11]: http://matplotlib.org/
 [12]: https://raw.githubusercontent.com/danriti/moleskine/master/python-traceview/images/latency.png
+[13]: https://gist.github.com/danriti/f93c88522fb17eb1d4a1
