@@ -1,9 +1,9 @@
-# Meet python-traceview: A library for accessing the TraceView API
+# python-traceview: A library for accessing the TraceView API
 
 Not to long ago, we introduced the [TraceView Data API][1], which exposes high
 level metrics and performance data related to your TraceView account via a
-[RESTful][9] API. For the unfamiliar, this means you access to
-[server latency timeseries][5], [error rates][6], and even
+[RESTful][9] API. For the unfamiliar, this means you can access
+[server latency timeseries][5], [application error rates][6], and even
 [browsers used by end users][7].
 
 In an effort to make accessing the Data API even easier, I have a created
@@ -21,7 +21,7 @@ $ pip install python-traceview
 If you don't have Python installed, I recommend this [guide][10] for
 installation instructions and best practices.
 
-## Quick Start
+## Getting Started
 
 Begin by importing the ``traceview`` module:
 
@@ -67,8 +67,8 @@ application:
 [u'PHP', u'cURL', u'file_get_contents', u'lighttpd', u'php_mysql', u'php_mysqli']
 ```
 
-Using the powerful [matplotlib][11] library, let's write a short script for
-creating a graph of the `PHP` layer's latency over the past week:
+Using the powerful [matplotlib][11] library, we can easily create a script for
+graphing `PHP` layer's latency over the past week:
 
 ```python
 from datetime import datetime
@@ -76,26 +76,30 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import traceview
 
-tv = traceview.TraceView('API KEY HERE')
-results = tv.server.latency_series(app='Default', layer='PHP', time_window='week')
+def main():
+    tv = traceview.TraceView('API KEY HERE')
+    results = tv.server.latency_series(app='Default', layer='PHP', time_window='week')
 
-# convert timestamps to datetime objects
-dates = [datetime.utcfromtimestamp(i[0]) for i in results['items']]
+    # convert timestamps to datetime objects
+    dates = [datetime.utcfromtimestamp(i[0]) for i in results['items']]
 
-# convert average latency to milliseconds (divide by 1000)
-php_average_latency = []
-for item in results['items']:
-    average_latency = item[2]
-    if average_latency:
-        php_average_latency.append(average_latency / 1000)
-    else:
-        php_average_latency.append(0)
+    # convert average latency to milliseconds (divide by 1000)
+    php_average_latency = []
+    for item in results['items']:
+        average_latency = item[2]
+        if average_latency:
+            php_average_latency.append(average_latency / 1000)
+        else:
+            php_average_latency.append(0)
 
-plt.figure(figsize=(12, 5), dpi=80)
-plt.plot(dates, php_average_latency)
-plt.ylabel('Average Latency (milliseconds)')
-plt.title('PHP Average Latency - by Week')
-plt.savefig('latency.png')
+    # create a matplotlib plot
+    plt.figure(figsize=(12, 5), dpi=80)
+    plt.plot(dates, php_average_latency)
+    plt.title('PHP Average Latency (ms) - by Week')
+    plt.savefig('latency.png')
+
+if __name__ == '__main__':
+    main()
 ```
 
 ![php average latency by week][12]
