@@ -1,21 +1,25 @@
-# Faking the Funk: Mocking External Services in Tests
+# Faking the Funk: Mocking External Services in Python Tests
 
 In this day and age, it's difficult to build an application that does **not**
 rely on some type of external service. Whether the service is handling
-[user identity][1], getting [interesting data][2], or hurling RESTful
+[user identity][1], analyzing [interesting data][2], or hurling RESTful
 [insults][3], you have to accept the fact that you now have a dependency on
 something you do **not** control.
 
 One place where this dependency can become painfully obvious is running your
 test suite. Making requests to an external service can cause your tests
-to become extremely slow. According to [Harlow Ward][6], these extra requests
-can cause a wide range of problems:
+to become *extremely* slow. According to [Harlow Ward][6], these extra requests
+during tests can cause a wide range of problems:
 
 > - Tests failing intermittently due to connectivity issues.
 > - Dramatically slower test suites.
 > - Hitting API rate limits on 3rd party sites (e.g. Twitter).
 > - Service may not exist yet (only documentation for it).
 > - Service doesn’t have a sandbox or staging server.
+
+We want to ensure our test suite is fast and consistent. Thus, let's take a
+look at how we can leverage mocks to create an isolated test environment in
+Python.
 
 
 [1]: https://dev.twitter.com/docs/auth
