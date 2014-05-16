@@ -26,9 +26,9 @@ Python.
 To begin, let's take a look at some of the tools we're going to use in this
 exercise:
 
+- [Github API][9], external service we are going to mock
 - [requests][7], a fantastic HTTP library
 - [httmock][8], a mocking library for requests
-- [Github API][9], external service we are going to mock
 
 
 [1]: https://dev.twitter.com/docs/auth
