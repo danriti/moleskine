@@ -23,11 +23,12 @@ Python.
 
 ## We Want the Funk
 
-To being, let's take a look at some of the tools we're going to use in this
+To begin, let's take a look at some of the tools we're going to use in this
 exercise:
 
 - [requests][7], a fantastic HTTP library
 - [httmock][8], a mocking library for requests
+- [Github API][9], external service we are going to mock
 
 
 [1]: https://dev.twitter.com/docs/auth
@@ -38,3 +39,4 @@ exercise:
 [6]: http://robots.thoughtbot.com/how-to-stub-external-services-in-tests
 [7]: http://docs.python-requests.org/
 [8]: https://github.com/patrys/httmock
+[9]: https://developer.github.com/v3/
