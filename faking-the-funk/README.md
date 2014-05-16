@@ -37,3 +37,4 @@ exercise:
 [5]: https://twitter.com/futuresanta
 [6]: http://robots.thoughtbot.com/how-to-stub-external-services-in-tests
 [7]: http://docs.python-requests.org/
+[8]: https://github.com/patrys/httmock
