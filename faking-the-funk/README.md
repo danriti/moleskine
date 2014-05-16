@@ -21,6 +21,14 @@ We want to ensure our test suite is fast and consistent. Thus, let's take a
 look at how we can leverage mocks to create an isolated test environment in
 Python.
 
+## We Want the Funk
+
+To being, let's take a look at some of the tools we're going to use in this
+exercise:
+
+- [requests][7], a fantastic HTTP library
+- [httmock][8], a mocking library for requests
+
 
 [1]: https://dev.twitter.com/docs/auth
 [2]: https://developer.github.com/v3/issues/
@@ -28,3 +36,4 @@ Python.
 [4]: http://blog.codinghorror.com/the-prototype-pitfall/
 [5]: https://twitter.com/futuresanta
 [6]: http://robots.thoughtbot.com/how-to-stub-external-services-in-tests
+[7]: http://docs.python-requests.org/
