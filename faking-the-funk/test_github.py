@@ -41,20 +41,23 @@ class TestGithub(unittest.TestCase):
 
     def test_repos_context_manager(self):
         with HTTMock(repos):
-            results = github.repos('appneta', 'burndown')
+            r = github.Repository('appneta', 'burndown')
+            results = r.get()
         self.assertNotEqual(results, None)
         self.assertIsInstance(results, dict)
 
     @with_httmock(repos)
     def test_repos_decorator(self):
-        results = github.repos('appneta', 'burndown')
+        r = github.Repository('appneta', 'burndown')
+        results = r.get()
         self.assertNotEqual(results, None)
         self.assertIsInstance(results, dict)
 
     @with_httmock(repos)
     def test_repos_name(self):
         name = 'burndown'
-        results = github.repos('appneta', name)
+        r = github.Repository('appneta', 'burndown')
+        results = r.get()
         self.assertNotEqual(results, None)
         self.assertIsInstance(results, dict)
         self.assertTrue('name' in results)
@@ -63,4 +66,5 @@ class TestGithub(unittest.TestCase):
     @with_httmock(repos_rate_limit_exceeded)
     def test_repos_rate_limit_exceeded(self):
         with self.assertRaises(requests.exceptions.HTTPError):
-            github.repos('appneta', 'burndown')
+            r = github.Repository('appneta', 'burndown')
+            r.get()
