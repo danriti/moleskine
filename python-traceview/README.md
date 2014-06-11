@@ -75,25 +75,24 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import traceview
 
+API_KEY = 'API KEY HERE'
+
 def main():
-    tv = traceview.TraceView('API KEY HERE')
-    results = tv.server.latency_series(app='Default', layer='PHP', time_window='week')
+    tv = traceview.TraceView(API_KEY)
+    results = tv.server.latency_by_layer('Default', time_window='week')
+
+    # get the php layer dictionary
+    php = next((x for x in results if x.get('layer') == 'PHP'), None)
 
     # convert timestamps to datetime objects
-    dates = [datetime.utcfromtimestamp(i[0]) for i in results['items']]
+    dates = [datetime.utcfromtimestamp(i[0]) for i in php['timeseries']['items']]
 
-    # handle the php average latency
-    php_average_latency = []
-    for item in results['items']:
-        average_latency = item[2]
-        if average_latency:
-            php_average_latency.append(average_latency / 1000) # convert to milliseconds
-        else:
-            php_average_latency.append(0)
+    # calculate average latency and convert to milliseconds
+    average_latency = [((i[2] / i[1]) / 1000) for i in php['timeseries']['items']]
 
     # create a matplotlib plot
     plt.figure(figsize=(12, 5), dpi=80)
-    plt.plot(dates, php_average_latency)
+    plt.plot(dates, average_latency)
     plt.title('PHP Average Latency (ms) - by Week')
     plt.savefig('latency.png')
 
