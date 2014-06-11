@@ -81,18 +81,19 @@ def main():
     tv = traceview.TraceView(API_KEY)
     results = tv.server.latency_by_layer('Default', time_window='week')
 
-    # get the php layer dictionary
+    # get the php layer
     php = next((x for x in results if x.get('layer') == 'PHP'), None)
 
     # convert timestamps to datetime objects
     dates = [datetime.utcfromtimestamp(i[0]) for i in php['timeseries']['items']]
 
-    # calculate average latency and convert to milliseconds
+    # calculate average latency (total_latency / volume) and convert to
+    # milliseconds
     average_latency = [((i[2] / i[1]) / 1000) for i in php['timeseries']['items']]
 
     # create a matplotlib plot
     plt.figure(figsize=(12, 5), dpi=80)
-    plt.plot(dates, average_latency)
+    plt.stackplot(dates, average_latency, colors=['#1dacd6'])
     plt.title('PHP Average Latency (ms) - by Week')
     plt.savefig('latency.png')
 
