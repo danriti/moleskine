@@ -58,6 +58,25 @@ changes:
    repository endpoint.
 1. ([Commit][13]) Update our unit test to use the `repository` mock.
 
+Now we re-run the test and ...
+
+```python
+(env)[driti@ubuntu python-mocked-service]$ python test_github.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.009s
+
+OK
+```
+
+Wow, talk about a speed up! Doing some simple math, we can see that this
+results in a **27x** speed up off of a single test:
+
+```python
+(env)[driti@ubuntu python-mocked-service]$ python -c "print(0.245 / 0.009)"
+27.2222222222
+```
+
 Nice, well that was easy.
 
 ### Insert Inception Reference About Going Deeper
