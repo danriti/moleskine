@@ -7,7 +7,8 @@ import requests
 
 class Repository(object):
 
-    AUTHORITY = 'https://api.github.com'
+    SCHEME = 'https'
+    AUTHORITY = 'api.github.com'
     PATH = '/repos/{0}/{1}'
 
     def __init__(self, owner, repo):
@@ -17,12 +18,19 @@ class Repository(object):
 
     @property
     def uri(self):
-        return self.AUTHORITY + self.path
+        return self.SCHEME + '://' + self.AUTHORITY + self.path
 
     def get(self):
         response = requests.get(self.uri)
         response.raise_for_status()
         return response.json()
+
+
+def get_repository(owner, repo):
+    uri = 'https://api.github.com/repos/{0}/{1}'.format(owner, repo)
+    response = requests.get(uri)
+    response.raise_for_status()
+    return response.json()
 
 
 def main():
