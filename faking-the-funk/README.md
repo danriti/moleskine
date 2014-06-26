@@ -33,9 +33,10 @@ exercise:
 Let's start by pretending our application relies on the Github [repository][14]
 endpoint. Thus, we can begin with the following:
 
-1. [Add a `get_repository` function][10], for getting Github repository information.
-1. [Add a `test_get_repository` test case][11], for testing our newly created
-   `get_repository` function.
+1. ([Commit][10]) Add a `get_repository` function, for getting Github repository
+   information.
+1. ([Commit][11]) Add a `test_get_repository` test case, for testing our newly
+   created `get_repository` function.
 
 Now let's go ahead and run the test:
 
@@ -48,14 +49,14 @@ Ran 1 test in 0.245s
 OK
 ```
 
-We can see the test passes and it takes 0.245 seconds. I don't know
+We can see the test passes and it takes **0.245 seconds**. I don't know
 about you, but that's *way* to long for me. Let's speed things up a bit by
-mocking out the **repository** endpoint. To do this, we can make the following
+mocking out the repository endpoint. To do this, we can make the following
 changes:
 
-1. [Create a `repository` mock][12], for faking the response from the
-   **repository** endpoint.
-1. [Update our unit test][13] to use the `repository` mock.
+1. ([Commit][12]) Create a `repository` mock, for faking the response from the
+   repository endpoint.
+1. ([Commit][13]) Update our unit test to use the `repository` mock.
 
 Nice, well that was easy.
 
