@@ -30,18 +30,32 @@ exercise:
 - [requests][7], a fantastic HTTP library
 - [httmock][8], a mocking library for requests
 
-Let's start with a simple example with the Github **repos** endpoint, were we
-add the following:
+Let's start by pretending our application relies on the Github [repository][14]
+endpoint. Thus, we can begin with the following:
 
-1. `test_get_repository` function, for testing our newly created
+1. [Add a `get_repository` function][10], for getting Github repository information.
+1. [Add a `test_get_repository` test case][11], for testing our newly created
    `get_repository` function.
-1. `get_repository` function, for getting Github repository information.
 
-Running the test, we can see the test pass and it takes XXX time. I don't know
-about you, but that's way to long for me. Let's speed things up a bit by
-creating a simple mock:
+Now let's go ahead and run the test:
 
-1. `repos` mock, for faking the **repos** endpoint.
+```python
+(env)[driti@ubuntu python-mocked-service]$ python test_github.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.245s
+
+OK
+```
+
+We can see the test passes and it takes 0.245 seconds. I don't know
+about you, but that's *way* to long for me. Let's speed things up a bit by
+mocking out the **repository** endpoint. To do this, we can make the following
+changes:
+
+1. [Create a `repository` mock][12], for faking the response from the
+   **repository** endpoint.
+1. [Update our unit test][13] to use the `repository` mock.
 
 Nice, well that was easy.
 
@@ -97,6 +111,7 @@ Finally, we can add some basic exception handling for the case that a
 - Handling POST (create fixtures)
 - Handling exceptions (resource does not exist)
 - Encapsulating mocks behind configuration variable
+- Link to Nate's talk: http://www.youtube.com/watch?v=Xu5EhKVZdV8
 
 
 [1]: https://dev.twitter.com/docs/auth
@@ -108,3 +123,8 @@ Finally, we can add some basic exception handling for the case that a
 [7]: http://docs.python-requests.org/
 [8]: https://github.com/patrys/httmock
 [9]: https://developer.github.com/v3/
+[10]: https://github.com/danriti/python-mocked-service/commit/c97eb466131c66cd3daf0b4c5e0014a5a4756bb0
+[11]: https://github.com/danriti/python-mocked-service/commit/5003a893b1c52b662d4618a754e921e857e65f9f
+[12]: https://github.com/danriti/python-mocked-service/commit/5c69623d77bbe5780d5d68dbc5e85bba08ae3770
+[13]: https://github.com/danriti/python-mocked-service/commit/332f03211dbe307b8dcce9b11f7e939f54262276
+[14]: https://developer.github.com/v3/repos/#get
