@@ -77,8 +77,8 @@ test:
 27.2222222222
 ```
 
-The mock we created was quite basic, so let's look at how we can further
-improve.
+It's a little earlier to celebrate, as the mock we created was quite basic. So
+let's look at how we can further improve.
 
 ### Tear the Roof Off
 
@@ -101,37 +101,69 @@ designing their API. Addressability is defined by [Leonard Richardson][20] and
 set through resources. **Every resource has it's own unique URI**: in fact,
 URI just stands for "Universal Resource Identifier."
 
-Since every resource is addressed unique, we can easily create test fixtures
-on the file system. For example, our resource URI
+Since every GitHub resource is uniquely addressed, we can easily create test
+fixtures on the file system. For example, our resource URI
 `api.github.com/repos.appneta/burndown` easily maps to a file path, where
 `burndown` can be a file containing JSON:
 
 ```bash
 (env)[driti@ubuntu]$ mkdir -p api.github.com/repos/appneta
 (env)[driti@ubuntu]$ echo '{"name":"burndown"}' > api.github.com/repos/appneta/burndown
-(env)[driti@ubuntu]$ jsonlint api.github.com/repos/appneta/burndown
+(env)[driti@ubuntu]$ cat api.github.com/repos/appneta/burndown | python -m json.tool
 {
-  "name": "burndown"
+    "name": "burndown"
 }
 ```
 
 Now let's go ahead and update our mock and test:
 
-1. Link to diff
+1. ([Commit][22]) Refactor the `repository` mock to use test fixtures.
 
-Analyzing on the `repos` mock, it actually has *nothing* specific about the
-**repos** endpoint anymore. In fact, it seems we have created a mock that will
-correctly handle a GET for any resource that has a test fixture on our file
-system.
+```bash
+(env)[driti@ubuntu]$ python test_github.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.009s
 
-The proof is in the pudding, so let's make some Jello:
+OK
+```
 
-1. Create test fixture for user data endpoint `/user/danriti`?
-2. Create test case for GET of user data
+Awesome!
 
-Finally, we can add some basic exception handling for the case that a
+Looking back at our `repository` mock, it actually contains *nothing* specific
+about the repository endpoint anymore (other then the `path` parameter). In fact,
+it seems like the mock can be reused for generic GET requests for *any* resource
+that has a test fixture on our file system.
 
-## Integrity
+1. ([Commit][25]) Rename `repository` mock to `resource_get`.
+
+The proof is in the pudding, so let's [make some Jello][23] and see if our
+updated mock can handle GitHub [user][24] information:
+
+1. ([Commit][26]) Add a `get_user` function, for getting GitHub [user][24]
+   information.
+1. ([Commit][27]) Add a `test_get_user` test case, for testing our `get_user`
+   function.
+1. ([Commit][28]) Create a test fixture for user `danriti`.
+
+Running our test suite yields sweet victory:
+
+```bash
+(env)[driti@ubuntu]$ python test_github.py
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.013s
+
+OK
+```
+
+Witty conclusion here!
+
+## Exception Handling
+
+TALK ABOUT IT
+
+## Integrity (remove this?)
 
 ## Notes
 
@@ -166,3 +198,10 @@ Finally, we can add some basic exception handling for the case that a
 [19]: http://shop.oreilly.com/product/9780596529260.do
 [20]: https://twitter.com/leonardr
 [21]: https://twitter.com/samruby
+[22]: https://github.com/danriti/python-mocked-service/commit/b8304d3a6e7225b2e2d2d9bdf3a7c623f095fba0
+[23]: https://www.youtube.com/watch?v=zt6IyMYcyZk
+[24]: https://developer.github.com/v3/users/#get-a-single-user
+[25]: https://github.com/danriti/python-mocked-service/commit/f4e91a12fc401dd7f39f96a315e4eab19e8b115f
+[26]: https://github.com/danriti/python-mocked-service/commit/9c7cad198d0e2eed8053198c08fe12f093ad17f5
+[27]: https://github.com/danriti/python-mocked-service/commit/95e2c572fba2b7eec5bf6492876906b22c98e441
+[28]: https://github.com/danriti/python-mocked-service/commit/c4f45acd4e29beff06b410892324c041f494641d
