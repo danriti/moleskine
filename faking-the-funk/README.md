@@ -77,10 +77,15 @@ test:
 27.2222222222
 ```
 
-It's a little earlier to celebrate, as the mock we created was quite basic. So
-let's look at how we can further improve.
+It's important to note that we do **not** want to create our mocks within our
+test files, as this does not promote the idea of reusability. Thus, I highly
+recommend creating all your mocks within a [`mocks` module][36] to encourage
+reuse among existing and future tests.
 
-### Tear the Roof Off
+## Tear the Roof Off
+
+The mock we created was quite basic. So let's take a look at how we can further
+improve.
 
 Thinking ahead, I'd like to add many more methods to my GitHub library to
 support the numerous functionalities of the GitHub API. However, I'm reluctant
@@ -101,10 +106,10 @@ designing their API. Addressability is defined by [Leonard Richardson][20] and
 set through resources. **Every resource has it's own unique URI**: in fact,
 URI just stands for "Universal Resource Identifier."
 
-Since every GitHub resource is uniquely addressed, we can easily create test
-fixtures on the file system. For example, our resource URI
-`api.github.com/repos.appneta/burndown` easily maps to a file path, where
-`burndown` can be a file containing JSON:
+Since every GitHub resource is uniquely addressed, this makes it easy for us to
+map a resource URI to a file on our file system. For example, the resource URI
+`api.github.com/repos/appneta/burndown` can just be a file nested in several
+directories containing JSON:
 
 ```bash
 (env)[driti@ubuntu]$ mkdir -p api.github.com/repos/appneta
@@ -135,10 +140,12 @@ about the repository endpoint anymore (other then the `path` parameter). In fact
 it seems like the mock can be reused for generic GET requests for *any* resource
 that has a test fixture on our file system.
 
+The proof is in the pudding, so let's update our mock:
+
 1. ([Commit][25]) Rename `repository` mock to `resource_get`.
 
-The proof is in the pudding, so let's [make some Jello][23] and see if our
-updated mock can handle GitHub [user][24] information:
+So let's go ahead and put our updated `resource_get` mock to the test and see
+if it can properly handle requests for GitHub [user][24] information:
 
 1. ([Commit][26]) Add a `get_user` function, for getting GitHub [user][24]
    information.
@@ -146,7 +153,7 @@ updated mock can handle GitHub [user][24] information:
    function.
 1. ([Commit][28]) Create a test fixture for user `danriti`.
 
-Running our test suite yields sweet victory:
+Running our updated test suite yields sweet victory:
 
 ```bash
 (env)[driti@ubuntu]$ python test_github.py
@@ -157,24 +164,43 @@ Ran 2 tests in 0.013s
 OK
 ```
 
-Witty conclusion here!
+With our new and improved `resource_get` mock, we now only have to create test
+fixtures anytime we want to add new functionality and test it!
 
-## Exception Handling
+## Whole Lot of Rhythm Going Round
 
-TALK ABOUT IT
+Developers love refactoring, right? Well I can think of a few more changes that
+are appropriate.
 
-## Integrity (remove this?)
+First, our mock knows to much! Thus, I propose we do some good old [information
+hiding][30] and move the file open functionality out of our mock and into a new
+class called `Resource`:
 
-## Notes
+1. ([Commit][31]) Create Resource class for encapsulating file handling.
 
-- Create tests to confirm mock assumptions and protect mismatching mocks and implementation.
-- Disabling mocks will enable you to see mock vs implementation diffs
-- Link to urlmock/response argument types (advanced usage)
-- Handling GET (read fixtures)
-- Handling POST (create fixtures)
-- Handling exceptions (resource does not exist)
-- Encapsulating mocks behind configuration variable
-- Link to Nate's talk: http://www.youtube.com/watch?v=Xu5EhKVZdV8
+Secondly, let's introduce some error handling so our mock will respond properly
+with a `404` if a resource is not available:
+
+1. ([Commit][32]) Add error handling if resource is not available.
+
+Now I can rest easy, knowing that I have created a realistic, reusable and easy
+to maintain mock infrastructure!
+
+## Conclusion
+
+Mocking external services can get complicated, fast. In this article, we've only
+covered the handling of GET requests (i.e. reading test fixtures), so it's
+important to note that complexity can increase as you introduce mocking of
+POST, PUT, and DELETE requests.
+
+However complex, I hope I have demonstrated the value to your test suite when
+using a structured and well organized approach when creating mocks of external
+services. Not only will your test suite improve in speed, but you'll create a
+set of reusable mocks that can be leveraged by future tests.
+
+As a follow up, I highly encourage to you watch the PyCon 2014 talk by
+[Augie Fackler][33] and [Nathaniel Manista][34] titled
+[Stop Mocking, Start Testing][35].
 
 
 [1]: https://dev.twitter.com/docs/auth
@@ -205,3 +231,11 @@ TALK ABOUT IT
 [26]: https://github.com/danriti/python-mocked-service/commit/9c7cad198d0e2eed8053198c08fe12f093ad17f5
 [27]: https://github.com/danriti/python-mocked-service/commit/95e2c572fba2b7eec5bf6492876906b22c98e441
 [28]: https://github.com/danriti/python-mocked-service/commit/c4f45acd4e29beff06b410892324c041f494641d
+[29]: https://github.com/danriti/python-mocked-service/blob/f4e91a12fc401dd7f39f96a315e4eab19e8b115f/mocks/github.py#L20-L21
+[30]: http://en.wikipedia.org/wiki/Information_hiding
+[31]: https://github.com/danriti/python-mocked-service/commit/7fc95b4a8a53b5555ccef529271aaca76fd3cf8e
+[32]: https://github.com/danriti/python-mocked-service/commit/40a4ef112e11cba668b4d62f528e98b50d0041cd
+[33]: https://twitter.com/durin42
+[34]: https://plus.google.com/+NathanielManista
+[35]: http://www.youtube.com/watch?v=Xu5EhKVZdV8
+[36]: https://github.com/danriti/python-mocked-service/tree/master/mocks
