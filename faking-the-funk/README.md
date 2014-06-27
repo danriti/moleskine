@@ -30,13 +30,13 @@ exercise:
 - [requests][7], a fantastic HTTP library
 - [httmock][8], a mocking library for requests
 
-Let's start by pretending our application relies on the GitHub [repository][14]
-endpoint. Thus, we can begin with the following:
+Let's start by assuming our application relies on the GitHub [repository][14]
+endpoint. Thus, we can begin with the following changes:
 
-1. ([Commit][10]) Add a `get_repository` function, for getting GitHub repository
-   information.
-1. ([Commit][11]) Add a `test_get_repository` test case, for testing our newly
-   created `get_repository` function.
+- ([Commit][10]) Add a `get_repository` function, for getting GitHub repository
+  information.
+- ([Commit][11]) Add a `test_get_repository` test case, for testing our newly
+  created `get_repository` function.
 
 Now let's go ahead and run the test:
 
@@ -49,14 +49,14 @@ Ran 1 test in 0.245s
 OK
 ```
 
-We can see the test passes and it takes **0.245 seconds**. I don't know
-about you, but that's *way* to long for me. Let's speed things up a bit by
-mocking out the repository endpoint. To do this, we can make the following
-changes:
+We can see the test passes, however it took a total of **0.245 seconds**. I
+don't know about you, but that's *way* to long for me. So lets speed things up a
+bit by mocking out the repository endpoint! To do this, we can make the
+following changes:
 
-1. ([Commit][12]) Create a `repository` mock, for faking the response from the
-   repository endpoint.
-1. ([Commit][13]) Update our unit test to use the `repository` mock.
+- ([Commit][12]) Create a `repository` mock, for faking the response from the
+  repository endpoint.
+- ([Commit][13]) Update our unit test to use the `repository` mock.
 
 Now we re-run the test and ...
 
@@ -122,7 +122,7 @@ directories containing JSON:
 
 Now let's go ahead and update our mock and test:
 
-1. ([Commit][22]) Refactor the `repository` mock to use test fixtures.
+- ([Commit][22]) Refactor the `repository` mock to use test fixtures.
 
 ```bash
 (env)[driti@ubuntu]$ python test_github.py
@@ -142,16 +142,16 @@ that has a test fixture on our file system.
 
 The proof is in the pudding, so let's update our mock:
 
-1. ([Commit][25]) Rename `repository` mock to `resource_get`.
+- ([Commit][25]) Rename `repository` mock to `resource_get`.
 
 So let's go ahead and put our updated `resource_get` mock to the test and see
 if it can properly handle requests for GitHub [user][24] information:
 
-1. ([Commit][26]) Add a `get_user` function, for getting GitHub [user][24]
-   information.
-1. ([Commit][27]) Add a `test_get_user` test case, for testing our `get_user`
-   function.
-1. ([Commit][28]) Create a test fixture for user `danriti`.
+- ([Commit][26]) Add a `get_user` function, for getting GitHub [user][24]
+  information.
+- ([Commit][27]) Add a `test_get_user` test case, for testing our `get_user`
+  function.
+- ([Commit][28]) Create a test fixture for user `danriti`.
 
 Running our updated test suite yields sweet victory:
 
@@ -173,15 +173,24 @@ Developers love refactoring, right? Well I can think of a few more changes that
 are appropriate.
 
 First, our mock knows to much! Thus, I propose we do some good old [information
-hiding][30] and move the file open functionality out of our mock and into a new
-class called `Resource`:
+hiding][30] and move the file handling functionality out of our mock and into a
+new class called `Resource`:
 
-1. ([Commit][31]) Create Resource class for encapsulating file handling.
+- ([Commit][31]) Create Resource class for encapsulating file handling.
 
 Secondly, let's introduce some error handling so our mock will respond properly
 with a `404` if a resource is not available:
 
-1. ([Commit][32]) Add error handling if resource is not available.
+- ([Commit][32]) Add error handling if resource is not available.
+
+```bash
+(env)[driti@ubuntu]$ python test_github.py
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.011s
+
+OK
+```
 
 Now I can rest easy, knowing that I have created a realistic, reusable and easy
 to maintain mock infrastructure!
@@ -190,13 +199,13 @@ to maintain mock infrastructure!
 
 Mocking external services can get complicated, fast. In this article, we've only
 covered the handling of GET requests (i.e. reading test fixtures), so it's
-important to note that complexity can increase as you introduce mocking of
+important to note that complexity may increase as you introduce mocking of
 POST, PUT, and DELETE requests.
 
 However complex, I hope I have demonstrated the value to your test suite when
 using a structured and well organized approach when creating mocks of external
 services. Not only will your test suite improve in speed, but you'll create a
-set of reusable mocks that can be leveraged by future tests.
+set of reusable mocks that can be leveraged by existing and future tests.
 
 As a follow up, I highly encourage to you watch the PyCon 2014 talk by
 [Augie Fackler][33] and [Nathaniel Manista][34] titled
