@@ -18,8 +18,8 @@ during tests can cause a wide range of problems:
 > - Service doesn’t have a sandbox or staging server.
 
 We want to ensure our test suite is fast and consistent. Thus, let's take a
-look at how we can leverage mocks to create an isolated test environment in
-Python.
+look at how we can leverage [mocks][38] to create an isolated test environment
+in Python.
 
 ## We Want the Funk
 
@@ -29,7 +29,7 @@ exercise:
 1. [GitHub API][9], external service we are going to mock
 1. [requests][7], a fantastic HTTP library
 1. [httmock][8], a mocking library for requests
-1. [python-mocked-service][37], an example GitHub repository for tracking our code changes through diffs
+1. [python-mocked-service][37], an example GitHub repository for tracking our code changes
 
 Let's start by assuming our application relies on the GitHub [repository][14]
 endpoint. Thus, we can begin with the following changes:
@@ -83,10 +83,10 @@ test files, as this does not promote the idea of reusability. Thus, I highly
 recommend creating all your mocks within a [`mocks` module][36] to encourage
 reuse among existing and future tests.
 
-## Tear the Roof Off
-
 The mock we created was quite basic. So let's take a look at how we can further
 improve.
+
+## Tear the Roof Off
 
 Thinking ahead, I'd like to add many more methods to my GitHub library to
 support the numerous functionalities of the GitHub API. However, I'm reluctant
@@ -109,8 +109,8 @@ URI just stands for "Universal Resource Identifier."
 
 Since every GitHub resource is uniquely addressed, this makes it easy for us to
 map a resource URI to a file on our file system. For example, the resource URI
-`api.github.com/repos/appneta/burndown` can just be a file nested in several
-directories containing JSON:
+`api.github.com/repos/appneta/burndown` can just be a file containg JSON that is
+nested in several directories:
 
 ```bash
 (env)[driti@ubuntu]$ mkdir -p api.github.com/repos/appneta
@@ -173,9 +173,9 @@ fixtures anytime we want to add new functionality and test it!
 Developers love refactoring, right? Well I can think of a few more changes that
 are appropriate.
 
-First, our mock knows to much! Thus, I propose we do some good old [information
-hiding][30] and move the file handling functionality out of our mock and into a
-new class called `Resource`:
+First, our mock [knows to much][29]! Thus, I propose we do some good old
+[information hiding][30] and move the file handling functionality out of our
+mock and into a new class called `Resource`:
 
 - ([Commit][31]) Create Resource class for encapsulating file handling.
 
@@ -194,7 +194,7 @@ OK
 ```
 
 Now I can rest easy, knowing that I have created a realistic, reusable and easy
-to maintain mock infrastructure!
+to maintain code base for mocking my dependency on GitHub!
 
 ## Conclusion
 
@@ -250,3 +250,4 @@ As a follow up, I highly encourage to you watch the PyCon 2014 talk by
 [35]: http://www.youtube.com/watch?v=Xu5EhKVZdV8
 [36]: https://github.com/danriti/python-mocked-service/tree/master/mocks
 [37]: https://github.com/danriti/python-mocked-service
+[38]: http://en.wikipedia.org/wiki/Mock_object
