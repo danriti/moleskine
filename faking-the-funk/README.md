@@ -26,22 +26,22 @@ Python.
 To begin, let's take a look at some of the tools we're going to use in this
 exercise:
 
-- [Github API][9], external service we are going to mock
+- [GitHub API][9], external service we are going to mock
 - [requests][7], a fantastic HTTP library
 - [httmock][8], a mocking library for requests
 
-Let's start by pretending our application relies on the Github [repository][14]
+Let's start by pretending our application relies on the GitHub [repository][14]
 endpoint. Thus, we can begin with the following:
 
-1. ([Commit][10]) Add a `get_repository` function, for getting Github repository
+1. ([Commit][10]) Add a `get_repository` function, for getting GitHub repository
    information.
 1. ([Commit][11]) Add a `test_get_repository` test case, for testing our newly
    created `get_repository` function.
 
 Now let's go ahead and run the test:
 
-```python
-(env)[driti@ubuntu python-mocked-service]$ python test_github.py
+```bash
+(env)[driti@ubuntu]$ python test_github.py
 .
 ----------------------------------------------------------------------
 Ran 1 test in 0.245s
@@ -60,8 +60,8 @@ changes:
 
 Now we re-run the test and ...
 
-```python
-(env)[driti@ubuntu python-mocked-service]$ python test_github.py
+```bash
+(env)[driti@ubuntu]$ python test_github.py
 .
 ----------------------------------------------------------------------
 Ran 1 test in 0.009s
@@ -69,36 +69,47 @@ Ran 1 test in 0.009s
 OK
 ```
 
-Wow, talk about a speed up! Doing some simple math, we can see that this
-results in a **27x** speed up off of a single test:
+Wow, talk about a speed up! In fact, it was a **27x** speed up off of a *single*
+test:
 
-```python
-(env)[driti@ubuntu python-mocked-service]$ python -c "print(0.245 / 0.009)"
+```bash
+(env)[driti@ubuntu]$ python -c "print(0.245 / 0.009)"
 27.2222222222
 ```
 
-Nice, well that was easy.
+The mock we created was quite basic, so let's look at how we can further
+improve.
 
-### Insert Inception Reference About Going Deeper
+### Tear the Roof Off
 
-Now the mock we created was quite basic, so let's look at how we can improve
-it further.
+Thinking ahead, I'd like to add many more methods to my GitHub library to
+support the numerous functionalities of the GitHub API. However, I'm reluctant
+because this means I have to create many more mocks.
 
-I'm a big fan of separation of concerns. The way I see it, we have two concerns
-in this case, the mock itself and the resource content. Looking through a MVC
-lens, the mock is similar to a controller, while the resource content is
-similar to the model(?).
+Immediately, I realize that my initial approach at designing a mock was rushed
+and has room for improvement. For starters, let's approach the problem through
+a [separation of concerns][15] point of view. We have two concerns when it comes
+to mocking a service, the mock and the [resource][18] response. Lumping both these
+concerns into the same places makes my mock quite inflexible. So why don't we
+try moving our resource response into a [test fixture][17]!
 
-The easiest way to separate the resource content is to move it into a test
-fixture that lives on the file system. Immediately, following the "single URI
-for each resource" RESTful best practice becomes our best friend here, because
-our resource URI `api.github.com/repos.appneta/burndown` easily maps to a file
-path, where `burndown` can be a file containing JSON:
+Lucky for us, GitHub followed the RESTful best practice of **Addressability** when
+designing their API. Addressability is defined by [Leonard Richardson][20] and
+[Sam Ruby][21] in [RESTful Web Services][19] as,
+
+> A web service is addressable if it exposes the interesting aspects of its data
+set through resources. **Every resource has it's own unique URI**: in fact,
+URI just stands for "Universal Resource Identifier."
+
+Since every resource is addressed unique, we can easily create test fixtures
+on the file system. For example, our resource URI
+`api.github.com/repos.appneta/burndown` easily maps to a file path, where
+`burndown` can be a file containing JSON:
 
 ```bash
-$ mkdir -p api.github.com/repos/appneta
-$ echo '{"name":"burndown"}' > api.github.com/repos/appneta/burndown
-$ jsonlint api.github.com/repos/appneta/burndown
+(env)[driti@ubuntu]$ mkdir -p api.github.com/repos/appneta
+(env)[driti@ubuntu]$ echo '{"name":"burndown"}' > api.github.com/repos/appneta/burndown
+(env)[driti@ubuntu]$ jsonlint api.github.com/repos/appneta/burndown
 {
   "name": "burndown"
 }
@@ -148,3 +159,10 @@ Finally, we can add some basic exception handling for the case that a
 [12]: https://github.com/danriti/python-mocked-service/commit/5c69623d77bbe5780d5d68dbc5e85bba08ae3770
 [13]: https://github.com/danriti/python-mocked-service/commit/332f03211dbe307b8dcce9b11f7e939f54262276
 [14]: https://developer.github.com/v3/repos/#get
+[15]: http://en.wikipedia.org/wiki/Separation_of_concerns
+[16]: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+[17]: http://en.wikipedia.org/wiki/Test_fixture#Software
+[18]: http://en.wikipedia.org/wiki/Web_resource
+[19]: http://shop.oreilly.com/product/9780596529260.do
+[20]: https://twitter.com/leonardr
+[21]: https://twitter.com/samruby
