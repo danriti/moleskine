@@ -34,9 +34,9 @@ exercise:
 Let's start by assuming our application relies on the GitHub [repository][14]
 endpoint. Thus, we can begin with the following changes:
 
-- ([Commit][10]) Add a `get_repository` function, for getting GitHub repository
+- ([Commit][10]) Add `get_repository` function, for getting GitHub repository
   information.
-- ([Commit][11]) Add a `test_get_repository` test case, for testing our newly
+- ([Commit][11]) Add `test_get_repository` test case, for testing our newly
   created `get_repository` function.
 
 Now let's go ahead and run the test:
@@ -123,7 +123,7 @@ nested in several directories:
 
 Now let's go ahead and update our mock and test:
 
-- ([Commit][22]) Refactor the `repository` mock to use test fixtures.
+- ([Commit][22]) Refactor `repository` mock to use test fixtures.
 
 ```bash
 (env)[driti@ubuntu]$ python test_github.py
@@ -148,9 +148,9 @@ The proof is in the pudding, so let's update our mock:
 So let's go ahead and put our updated `resource_get` mock to the test and see
 if it can properly handle requests for GitHub [user][24] information:
 
-- ([Commit][26]) Add a `get_user` function, for getting GitHub [user][24]
+- ([Commit][26]) Add `get_user` function, for getting GitHub [user][24]
   information.
-- ([Commit][27]) Add a `test_get_user` test case, for testing our `get_user`
+- ([Commit][27]) Add `test_get_user` test case, for testing our `get_user`
   function.
 - ([Commit][28]) Create a test fixture for user `danriti`.
 
