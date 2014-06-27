@@ -29,7 +29,7 @@ exercise:
 1. [GitHub API][9], external service we are going to mock
 1. [requests][7], a fantastic HTTP library
 1. [httmock][8], a mocking library for requests
-1. [python-mocked-service][37], a GitHub repository for tracking our code changes
+1. [python-mocked-service][37], an example GitHub repository for tracking our code changes through diffs
 
 Let's start by assuming our application relies on the GitHub [repository][14]
 endpoint. Thus, we can begin with the following changes:
