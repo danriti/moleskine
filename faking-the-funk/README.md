@@ -26,9 +26,10 @@ Python.
 To begin, let's take a look at some of the tools we're going to use in this
 exercise:
 
-- [GitHub API][9], external service we are going to mock
-- [requests][7], a fantastic HTTP library
-- [httmock][8], a mocking library for requests
+1. [GitHub API][9], external service we are going to mock
+1. [requests][7], a fantastic HTTP library
+1. [httmock][8], a mocking library for requests
+1. [python-mocked-service][37], a GitHub repository for tracking our code changes
 
 Let's start by assuming our application relies on the GitHub [repository][14]
 endpoint. Thus, we can begin with the following changes:
@@ -248,3 +249,4 @@ As a follow up, I highly encourage to you watch the PyCon 2014 talk by
 [34]: https://plus.google.com/+NathanielManista
 [35]: http://www.youtube.com/watch?v=Xu5EhKVZdV8
 [36]: https://github.com/danriti/python-mocked-service/tree/master/mocks
+[37]: https://github.com/danriti/python-mocked-service
