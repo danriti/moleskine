@@ -52,7 +52,7 @@ OK
 ```
 
 We can see the test passes, however it took a total of **0.245 seconds**. I
-don't know about you, but that's *way* to long for me. So lets speed things up a
+don't know about you, but that's *way* too long for me. So let's speed things up a
 bit by mocking out the repository endpoint! To do this, we can make the
 following changes:
 
@@ -94,7 +94,7 @@ support the numerous functionalities of the GitHub API. However, I'm reluctant
 because this means I have to create many more mocks.
 
 Immediately, I realize that my initial approach at designing a mock was rushed
-and has room for improvement. For starters, let's approach the problem through
+and has room for improvement. For starters, let's approach the problem from
 a [separation of concerns][15] point of view. We have two concerns when it comes
 to mocking a service, the mock and the [resource][18] response. Lumping both these
 concerns into the same places makes my mock quite inflexible. So why don't we
@@ -174,7 +174,7 @@ fixtures anytime we want to add new functionality and test it!
 Developers love refactoring, right? Well I can think of a few more changes that
 are appropriate.
 
-First, our mock [knows to much][29]! Thus, I propose we do some good old
+First, our mock [knows too much][29]! Thus, I propose we do some good old
 [information hiding][30] and move the file handling functionality out of our
 mock and into a new class called `Resource`:
 
@@ -204,12 +204,12 @@ covered the handling of GET requests (i.e. reading test fixtures), so it's
 important to note that complexity may increase as you introduce mocking of
 POST, PUT, and DELETE requests.
 
-However complex, I hope I have demonstrated the value to your test suite when
-using a structured and well organized approach when creating mocks of external
+However complex, I hope I have demonstrated the value to your test suite of
+using a structured and well organized approach when creating mocks for external
 services. Not only will your test suite improve in speed, but you'll create a
 set of reusable mocks that can be leveraged by existing and future tests.
 
-As a follow up, I highly encourage to you watch the PyCon 2014 talk by
+As a follow up, I highly encourage you to watch the PyCon 2014 talk by
 [Augie Fackler][33] and [Nathaniel Manista][34] titled
 [Stop Mocking, Start Testing][35].
 
