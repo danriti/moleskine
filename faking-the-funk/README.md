@@ -180,6 +180,12 @@ mock and into a new class called `Resource`:
 
 - ([Commit][31]) Create Resource class for encapsulating file handling.
 
+At first glance, you might think this is [overengineering][39]. While this may
+be true for simple file reading (i.e. mocking GET requests), you will have to
+deal with more complex file handling functionality when you start mocking POST,
+PUT, and DELETE requests. Thus, starting with this level of abstraction will
+help you in the long run.
+
 Secondly, let's introduce some error handling so our mock will respond properly
 with a `404` if a resource is not available:
 
@@ -252,3 +258,4 @@ As a follow up, I highly encourage you to watch the PyCon 2014 talk by
 [36]: https://github.com/danriti/python-mocked-service/tree/master/mocks
 [37]: https://github.com/danriti/python-mocked-service
 [38]: http://en.wikipedia.org/wiki/Mock_object
+[39]: http://en.wikipedia.org/wiki/Overengineering
