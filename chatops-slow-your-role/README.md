@@ -8,15 +8,26 @@ possibilities are endless thanks to [Hubot][3] and it's constantly growing
 
 One of the controversial tenets of ChatOps is the idea that *everyone* within the
 chat room has the ability to run commands. This idea is built upon the notion
-that team members are both accountable for their actions, but also that all
-commands that are visible to all members of the team. So this helps keep people
-honest.
+that team members understand they are accountable for their actions and that
+all commands executed are visible to all team members within the chat room. So
+not only do you have a "public" record what commands team members are executing,
+but you also get real-time peer review from everyone else.
 
 While this rather open access philosophy leaves plenty of room for debate, it's
 clear that it goes completely against the traditional view that only an
 [elite few][6] have access to the critical components of a system. Thus, this
 has the unfortunately consequence of making ChatOps hard (or even impossible)
 for many to adopt within their organizations.
+
+Enter [hubot-auth-me][]. A Hubot plugin that makes assigning and enforcing
+user-based roles easy as Sunday morning. That's right control freaks, rejoice!
+For now you can finally convince your boss it's time to take operations to the
+next level!
+
+## Next Witty Section Title
+
+TBD.
+
 
 [1]: https://github.com/github/hubot-scripts/blob/master/src/scripts/jenkins.coffee
 [2]: https://github.com/appneta/hubot-fabric
