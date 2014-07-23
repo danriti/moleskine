@@ -11,7 +11,7 @@ the chat room has the ability to run commands. This idea is built upon the
 notion that team members understand they are accountable for their actions and
 that all commands executed are visible to all team members within the chat room.
 So not only do you have a "public" record what commands team members are
-executing, but you also get real-time peer review from everyone else.
+executing, but you also get real-time peer review.
 
 While this rather open access philosophy leaves plenty of room for debate, it's
 clear that it goes completely against the traditional view that only an
