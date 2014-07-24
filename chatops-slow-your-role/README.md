@@ -62,11 +62,11 @@ $ redis-cli get "hubot:storage" | jsonlint | grep "Dan Riti" -C 3
       "mention_name": "Riti",
       "room": "traceview",
     }
-$ redis-cli get "hubot:storage" | jsonlint | grep "John Doe" -C 3
+$ redis-cli get "hubot:storage" | jsonlint | grep "Jane Doe" -C 3
     "54321": {
       "id": "54321",
       "jid": "54321@chat.example.com",
-      "name": "John Doe",
+      "name": "Jane Doe",
       "mention_name": "Doe",
       "room": "traceview",
     }
@@ -76,7 +76,29 @@ $ export HUBOT_AUTH_ADMIN=12345,54321
 And with a simple restart of Hubot, our `hubot-auth` plugin is setup and ready
 to go!
 
-## Attention
+## The Power Is Yours
+
+Now that we've declared our admin users, we can go ahead and start handing out
+role based permissions to our users:
+
+```
+Dan Riti> hubot Dan Riti has deploy role
+Hubot> @Riti: OK, Dan Riti has the 'deploy' role.
+```
+
+Checking what roles a user has is also easy:
+
+```
+Dan Riti> hubot what roles does Dan Riti have
+Hubot> @Riti: Dan Riti has the following roles: admin, deploy.
+```
+
+And finally, removing a role from a user:
+
+```
+Dan Riti> hubot Dan Riti doesn't have deploy role
+Hubot> @Riti: OK, Dan Riti doesn't have the 'deploy' role.
+```
 
 ## Notes
 
