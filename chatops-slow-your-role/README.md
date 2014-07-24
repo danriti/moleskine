@@ -21,13 +21,13 @@ for many to adopt within their organizations.
 
 Enter [hubot-auth][8]. A Hubot plugin that makes assigning and enforcing
 user-based roles easy as Sunday morning. That's right control freaks, rejoice!
-or now you can finally convince your boss it's time to take operations to the
-next level!
+You can finally convince your boss it's time to take operations to the next
+level!
 
 ## Fall In
 
 Getting started with `hubot-auth` is ~~easy~~ slightly complicated. The bad news
-is that there are multiple versions of this plugin co-existing within the Hubot
+is that there are multiple versions of this plugin coexisting within the Hubot
 community. The good news is that all but one are [unofficially deprecated][9],
 so you just have to do a little cleanup before getting started:
 
@@ -58,7 +58,8 @@ $ redis-cli ...
 $ export HUBOT_AUTH_ADMIN=1,2,3
 ```
 
-And with a simple restart of Hubot, our auth plugin is setup and ready to go!
+And with a simple restart of Hubot, our `hubot-auth` plugin is setup and ready
+to go!
 
 - Deprecation
 - Setup
