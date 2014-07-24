@@ -78,22 +78,25 @@ to go!
 
 ## The Power Is Yours
 
-Now that we've declared our admin users, we can go ahead and start handing out
-role based permissions to our users:
+Now that we've declared our admin users, we're ready to start dishing out
+user roles. Like many other aspects of Hubot, the commands are simple and easy
+to remember:
+
+Adding a role:
 
 ```
 Dan Riti> hubot Dan Riti has deploy role
 Hubot> @Riti: OK, Dan Riti has the 'deploy' role.
 ```
 
-Checking what roles a user has is also easy:
+Checking a specific user's current roles:
 
 ```
 Dan Riti> hubot what roles does Dan Riti have
 Hubot> @Riti: Dan Riti has the following roles: admin, deploy.
 ```
 
-And finally, removing a role from a user:
+Removing a role from a user:
 
 ```
 Dan Riti> hubot Dan Riti doesn't have deploy role
