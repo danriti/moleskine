@@ -54,15 +54,32 @@ is quite simple using the `redis-cli` command (assuming you're using redis to
 store your Hubot brain):
 
 ```bash
-$ redis-cli ...
-$ export HUBOT_AUTH_ADMIN=1,2,3
+$ redis-cli get "hubot:storage" | jsonlint | grep "Dan Riti" -C 3
+    "12345": {
+      "id": "12345",
+      "jid": "12345@chat.example.com",
+      "name": "Dan Riti",
+      "mention_name": "Riti",
+      "room": "traceview",
+    }
+$ redis-cli get "hubot:storage" | jsonlint | grep "John Doe" -C 3
+    "54321": {
+      "id": "54321",
+      "jid": "54321@chat.example.com",
+      "name": "John Doe",
+      "mention_name": "Doe",
+      "room": "traceview",
+    }
+$ export HUBOT_AUTH_ADMIN=12345,54321
 ```
 
 And with a simple restart of Hubot, our `hubot-auth` plugin is setup and ready
 to go!
 
-- Deprecation
-- Setup
+## Attention
+
+## Notes
+
 - Add/remove roles
 - Updating scripts to respect roles
 - Call to action to support plugin
