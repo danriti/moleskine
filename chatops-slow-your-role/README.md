@@ -103,9 +103,39 @@ Dan Riti> hubot Dan Riti doesn't have deploy role
 Hubot> @Riti: OK, Dan Riti doesn't have the 'deploy' role.
 ```
 
+Now we're ready to lay down the law.
+
+## I AM THE LAW
+
+The last step of the process is actually enforcing user roles within your
+Hubot scripts. `hubot-auth` exposes the following method on the `robot` object
+for checking user roles:
+
+```javascript
+robot.auth.hasRole(msg.envelope.user,'<role>')
+```
+
+For a quick demonstration, here's how one could modify the [`hubot ping`][11]
+command to only be accessible to users who have the 'ping' role:
+
+```coffeescript
+# Description:
+#   Utility commands surrounding Hubot uptime.
+#
+# Commands:
+#   hubot ping - Reply with pong
+
+module.exports = (robot) ->
+  robot.respond /PING$/i, (msg) ->
+    role = 'ping'
+    unless robot.auth.hasRole(msg.envelope.user, role)
+      msg.send "Access denied. You must have this role to use this command: #{role}"
+      return
+    msg.send "PONG"
+```
+
 ## Notes
 
-- Add/remove roles
 - Updating scripts to respect roles
 - Call to action to support plugin
 
@@ -119,3 +149,4 @@ Hubot> @Riti: OK, Dan Riti doesn't have the 'deploy' role.
 [8]: https://github.com/hubot-scripts/hubot-auth
 [9]: https://github.com/github/hubot/pull/656
 [10]: https://github.com/hubot-scripts/hubot-auth/blob/6b0165b94b5f99067199aadee3c7b6a710fde323/src/auth.coffee#L5
+[11]: https://github.com/github/hubot/blob/5c655d24e3198db9fd8c49724271d2df6d34df7d/src/scripts/ping.coffee#L11-L12
