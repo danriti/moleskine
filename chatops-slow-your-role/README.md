@@ -21,7 +21,7 @@ for many to adopt within their organizations.
 
 Enter [hubot-auth][8]. A Hubot script that makes assigning and enforcing
 user-based roles easy as Sunday morning. That's right control freaks, rejoice!
-You can finally convince your boss it's time to take operations to the next
+You can finally convince your team it's time to take operations to the next
 level!
 
 **NOTE**: This article assumes you have a basic understanding of ChatOps. If
@@ -33,7 +33,7 @@ this is a new concept to you, I highly recommend you watch the following talks:
 ## Fall In
 
 Getting started with `hubot-auth` is ~~easy~~ slightly complicated. The bad news
-is that there are multiple versions of this cript coexisting within the Hubot
+is that there are multiple versions of this script coexisting within the Hubot
 community. The good news is that all but one are [unofficially deprecated][9],
 so you just have to do a little cleanup before getting started:
 
