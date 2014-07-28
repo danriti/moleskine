@@ -115,8 +115,25 @@ for checking user roles:
 robot.auth.hasRole(msg.envelope.user,'<role>')
 ```
 
-For a quick demonstration, here's how one could modify the [`hubot ping`][11]
-command to only be accessible to users who have the 'ping' role:
+For a quick demonstration, let's look at how we can add role based access
+control to the "Hello World" of Hubot, [`hubot ping`][11]:
+
+```coffeescript
+# Description:
+#   Utility commands surrounding Hubot uptime.
+#
+# Commands:
+#   hubot ping - Reply with pong
+
+module.exports = (robot) ->
+  robot.respond /PING$/i, (msg) ->
+    msg.send "PONG"
+```
+
+A user enters: `hubot ping` and Hubot responds with `PONG`. Pretty simple stuff!
+Now let's go ahead and update this script to only allow users with the `ping`
+role from executing the command:
+
 
 ```coffeescript
 # Description:
