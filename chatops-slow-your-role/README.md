@@ -151,7 +151,20 @@ module.exports = (robot) ->
     msg.send "PONG"
 ```
 
-## Notes
+And now let's see it in action:
+
+```
+Dan Riti> hubot ping
+Hubot> Access denied. You must have this role to use this command: ping
+Dan Riti> hubot Dan Riti has ping role
+Hubot> @Riti: OK, Dan Riti has the 'ping' role.
+Dan Riti> hubot ping
+Hubot> PONG
+```
+
+Victory!
+
+## Conclusion
 
 - Updating scripts to respect roles
 - Call to action to support plugin
