@@ -31,13 +31,20 @@ that I should mention:
   the only browser that currently supports debugging Service Workers. Check
   [here][8] to see the current support status for Service Workers.
 
-Now we're ready to get started. To begin, let's setup our boilerplate for our
-simple web application:
+Now that's out of the way, we're ready to get started! To begin, let's setup our
+simple web application with some boilerplate:
 
 - ([Commit][10]) Add boilerplate files.
 
 Nothing interesting to see here, so let's quickly move into introducing a
-service worker into our application:
+bare bones Service Worker into our application:
+
+- ([Commit][11]) Add serviceworker.js file.
+
+Our Service Worker is beyond basic, however we have setup event listeners for
+two keys events: `install` and `fetch`.
+
+- ([Commit][12]) Update to register serviceworker.
 
 [1]: http://velocityconf.com/velocityny2014/public/schedule/detail/35821
 [2]: https://twitter.com/slightlylate
@@ -49,3 +56,5 @@ service worker into our application:
 [8]: https://jakearchibald.github.io/isserviceworkerready/
 [9]: https://github.com/w3c-webmob/ServiceWorkersDemos
 [10]: https://github.com/danriti/fade-to-black/commit/3b58eba256c9b934b10197cbd75590cd2dcc2965
+[11]: https://github.com/danriti/fade-to-black/commit/65bac6e4004267b75d1045040bf4e1e9e4abb95f
+[12]: https://github.com/danriti/fade-to-black/commit/ea59404db3d48e2d7d0b82887a305198f3ea9e49
