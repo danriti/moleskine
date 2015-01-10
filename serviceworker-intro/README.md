@@ -66,6 +66,25 @@ the root of our domain, the scope will be the entire origin.
 
 ![Registered service worker](https://raw.githubusercontent.com/danriti/moleskine/master/serviceworker-intro/images/03.png)
 
+In the above screenshot, we can see that web application loads successfully and
+the service worker is successfully registered in Chrome's console on the
+left side. I mentioned that Chrome has debugging available for currently
+running service workers, which is what we're looking at in the Developer Tools
+console on the right side.
+
+Looking closer at the service worker's console (right side), we can see that
+our `install` event gets successfully triggered and we see two `fetch` events,
+one for our `index.html` and one for our `styles.css`.
+
+Great, now we're ready to explore caching resources!
+
+## More Money, More Cache
+
+- polyfill
+- cache init
+- cache hit/miss
+
+
 [1]: http://velocityconf.com/velocityny2014/public/schedule/detail/35821
 [2]: https://twitter.com/slightlylate
 [3]: https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html
