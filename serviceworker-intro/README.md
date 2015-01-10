@@ -3,7 +3,7 @@
 At Velocity NY this past year, I was introduced by [Alex Russell][2] to
 [service workers][1]. For the uninitiated, service workers are a bleeding edge
 browser feature that provide event-driven scripts that run independently of web
-pages. A Service Worker script runs in the background on it's own thread
+pages. A service worker script runs in the background on it's own thread
 and provides the ability to respond to events even when the user is offline.
 
 Upon learning this, I immediately got excited because service workers open the
@@ -12,7 +12,7 @@ users. This is especially game changing for mobile web developers where the
 network can be unreliable.
 
 Since I'm a big fan of graceful degradation, let's take a look at how we can
-leverage the Service Worker to handle the following use cases for a simple
+leverage the service worker to handle the following use cases for a simple
 web application:
 
 - If the network is available, I want to cache my resources.
@@ -25,7 +25,7 @@ web application:
 Before getting started, there are a few notable points about service workers
 that I should mention:
 
-- The [Service Worker specification][7] is **not** complete and is still in
+- The [service worker specification][7] is **not** complete and is still in
   active development.
 - I'd recommend using Chrome 40+ for experimenting with service workers, as its
   the only browser that currently supports debugging service workers. Check
@@ -39,14 +39,14 @@ simple web application with some boilerplate:
 - ([Commit][100]) Add boilerplate files.
 
 Nothing interesting to see here, so let's quickly move into introducing a
-bare bones Service Worker into our application:
+bare bones service worker into our application:
 
 - ([Commit][101]) Add serviceworker.js file.
 
-Our Service Worker is quite basic, however we have setup event listeners for
+Our service worker is quite basic, however we have setup event listeners for
 two keys events:
 
-- The `install` event is triggered when a Service Worker is first registered.
+- The `install` event is triggered when a service worker is first registered.
 - The `fetch` event is triggered for all network requests made against our
   ServiceWorker scope.
 
@@ -55,13 +55,13 @@ events. However, if you have a burning desire to learn about other Service
 Worker events, read on [here][13].
 
 Now that we have some event listeners in place, let's go ahead and register our
-Service Worker:
+service worker:
 
-- ([Commit][102]) Update to register serviceworker.
+- ([Commit][102]) Update to register the service worker.
 
-As you can see, the registration of a Service Worker is a pretty straightforward
+As you can see, the registration of a service worker is a pretty straightforward
 task. The important thing to note is that service workers have a notion of scope
-based on where they are located in your domain. Since our Service Worker is at
+based on where they are located in your domain. Since our service worker is at
 the root of our domain, the scope will be the entire origin.
 
 ![Registered service worker](https://raw.githubusercontent.com/danriti/moleskine/master/serviceworker-intro/images/03.png)
@@ -78,5 +78,5 @@ the root of our domain, the scope will be the entire origin.
 [13]: https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#execution-context-events
 
 [100]: https://github.com/danriti/fade-to-black/commit/3b58eba256c9b934b10197cbd75590cd2dcc2965
-[101]: https://github.com/danriti/fade-to-black/commit/65bac6e4004267b75d1045040bf4e1e9e4abb95f
-[102]: https://github.com/danriti/fade-to-black/commit/ea59404db3d48e2d7d0b82887a305198f3ea9e49
+[101]: https://github.com/danriti/fade-to-black/commit/fc62151178da550bfcd0032cbe10449c9e8b20dd
+[102]: https://github.com/danriti/fade-to-black/commit/992b80a7b4f383e50173f7f70298f52cd7f8f5e1
