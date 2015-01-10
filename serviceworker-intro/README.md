@@ -1,12 +1,12 @@
-# Fade to Black: Graceful Degradation with the ServiceWorker
+# Fade to Black: Graceful Degradation with the Service Worker
 
 At Velocity NY this past year, I was introduced by [Alex Russell][2] to
-[Service Workers][1]. For the uninitiated, Service Workers are a bleeding edge
+[service workers][1]. For the uninitiated, service workers are a bleeding edge
 browser feature that provide event-driven scripts that run independently of web
 pages. A Service Worker script runs in the background on it's own thread
 and provides the ability to respond to events even when the user is offline.
 
-Upon learning this, I immediately got excited because Service Workers open the
+Upon learning this, I immediately got excited because service workers open the
 door for developers to be able to gracefully handle the offline experience for
 users. This is especially game changing for mobile web developers where the
 network can be unreliable.
@@ -22,15 +22,16 @@ web application:
 
 ## Allow Me To Re-Introduce Myself
 
-Before getting started, there are a few notable points about Service Workers
+Before getting started, there are a few notable points about service workers
 that I should mention:
 
 - The [Service Worker specification][7] is **not** complete and is still in
   active development.
-- I'd recommend using Chrome 40+ for experimenting with Service Workers, as its
-  the only browser that currently supports debugging Service Workers. Check
-  [here][8] to see the current support status for Service Workers.
-- Service Workers make extensive use of Promises. Ya heard?
+- I'd recommend using Chrome 40+ for experimenting with service workers, as its
+  the only browser that currently supports debugging service workers. Check
+  [here][8] to see the current support status for service workers.
+- service workers make extensive use of Promises. Ya heard?
+- Client side + proxy notes?
 
 Now that's out of the way, we're ready to get started! To begin, let's setup our
 simple web application with some boilerplate:
@@ -57,6 +58,11 @@ Now that we have some event listeners in place, let's go ahead and register our
 Service Worker:
 
 - ([Commit][102]) Update to register serviceworker.
+
+As you can see, the registration of a Service Worker is a pretty straightforward
+task. The important thing to note is that service workers have a notion of scope
+based on where they are located in your domain. Since our Service Worker is at
+the root of our domain, the scope will be the entire origin.
 
 ![Registered service worker](https://raw.githubusercontent.com/danriti/moleskine/master/serviceworker-intro/images/03.png)
 
