@@ -76,6 +76,13 @@ Looking closer at the service worker's console (right side), we can see that
 our `install` event gets successfully triggered and we see two `fetch` events,
 one for our `index.html` and one for our `styles.css`.
 
+Thus, if we break it down in order, the following happens:
+
+1. Browser fetches and loads `index.html`
+2. The service worker gets registered with our browser via inline script in
+   `index.html`
+3. Our browser fetches `serviceworker.js` and spins off
+
 Great, now we're ready to explore caching resources!
 
 ## More Money, More Cache
