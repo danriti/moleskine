@@ -1,3 +1,0 @@
-# docker-network
-
-TBD.
