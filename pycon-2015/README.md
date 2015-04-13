@@ -20,7 +20,25 @@ At AppNeta, we spend a lot of time thinking about how best to convey the meaning
 
 ## Geoff Gerrietts
 
-TBD
+* **[The Ethical Consequences of Our Collective Activities]
+  (https://www.youtube.com/watch?v=uSbKjRRbjZs)** leads my list off. Our
+  profession has more than a passing resemblance to the practice of law, and it
+  should incur similar responsibilities and offer similar privilege. Glyph
+  offers a compelling thesis with grace, nuance, and a little bit of
+  provocation.
+
+* In **[Distributed Systems 101](https://www.youtube.com/watch?v=YAFGQurdJ3U)**,
+  lvh provides a solid grounding in a complicated topic. As web
+  developers, we wrestle with distributed systems problems quite frequently --
+  "What happens when two web nodes try to write to the same row of the same
+  table?" Grounding the discussion of those challenges in distributed systems
+  theory makes resolutions clearer and more effective.
+
+* **["Words, Words, Words"](https://www.youtube.com/watch?v=EoWG0lavg9U)**
+  harkens back to my origins as a student of English, looking to use computers
+  to enhance our literary experience. Adam delivers on this premise, producing
+  some real insights in the reading of Othello and the sonnets even within the 
+  short bounds of this talk.
 
 ## Dan Riti
 
