@@ -4,7 +4,7 @@ The AppNeta team has just returned from a fantastically fun, edifying, and
 exhausting weekend at [PyCon 2015][1]. PyCon was held in Montreal this year,
 giving team members the opportunity to brush up on their French, binge on
 poutine, and absorb the many fabulous talks given by this year's speakers
-(including our very own development manager, Geoff Gerriets!).
+(including our very own development manager, Geoff Gerrietts!).
 
 We've compiled a list of some of our favorite talks and hope you enjoy them as
 much as we did!
@@ -58,11 +58,27 @@ much as we did!
 
 ## Dan Riti
 
-TBD
+* I was blown away by the Jacob Kaplan-Moss's keynote,
+  [I Don't Deserve to be Here][10]. Jacob talks about how the mythical
+  "10X Programmer" stereotype creates an barrier to entry into the field of
+  software engineering and draws comparisons that reinforce how ridiculous this
+  idea really is. Highly recommended!
+
+* Our fearless [BDFL][12], Guido van Rossum, speaks in [Type Hints][11] about
+  the current state of types in Python. The talk delves deep into [PEP 484][13],
+  which introduces a standard syntax for type hints using annotations on
+  function definitions for Python 3.5. Before anyone freaks out about types
+  in Python, Guido makes it crystal clear that this new addition is completely
+  optional and being added to aid teams working on large Python code bases.
+
+* That Docker is so hot right now, that I couldn't pass up on checking out
+  [Fire your supervisord: running Python apps on CoreOS][14] by Dan Callahan.
+
 
 ## Conclusion
 
-TBD
+So here is to another great year of innovation, talks, and programming in the
+Python community. See you in [Portland][9] at next year's conference!
 
 [1]: http://us.pycon.org/2015/
 [2]: https://www.youtube.com/watch?v=kNke_4WOWAU
@@ -72,3 +88,9 @@ TBD
 [6]: https://www.youtube.com/watch?v=uSbKjRRbjZs
 [7]: https://www.youtube.com/watch?v=YAFGQurdJ3U
 [8]: https://www.youtube.com/watch?v=EoWG0lavg9U
+[9]: http://pyfound.blogspot.com/2014/08/portland-chosen-as-pycon-20162017.html
+[10]: https://www.youtube.com/watch?v=hIJdFxYlEKE
+[11]: https://www.youtube.com/watch?v=2wDvzy6Hgxg
+[12]: http://en.wikipedia.org/wiki/Benevolent_dictator_for_life
+[13]: https://www.python.org/dev/peps/pep-0484/
+[14]: https://www.youtube.com/watch?v=jCor69OeR0g
