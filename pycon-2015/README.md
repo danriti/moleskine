@@ -73,6 +73,9 @@ much as we did!
 
 * That Docker is so hot right now, that I couldn't pass up on checking out
   [Fire your supervisord: running Python apps on CoreOS][14] by Dan Callahan.
+  But be warned, this isn't a tutorial on Docker, but an introduction into the
+  world of [CoreOS][15]. So if you've got a solid understanding of Docker, but
+  want to understand how you can deploy it in production, this is a must watch.
 
 
 ## Conclusion
@@ -94,3 +97,4 @@ Python community. See you in [Portland][9] at next year's conference!
 [12]: http://en.wikipedia.org/wiki/Benevolent_dictator_for_life
 [13]: https://www.python.org/dev/peps/pep-0484/
 [14]: https://www.youtube.com/watch?v=jCor69OeR0g
+[15]: https://coreos.com/
