@@ -58,9 +58,9 @@ much as we did!
 
 ## Dan Riti
 
-* I was blown away by the Jacob Kaplan-Moss's keynote,
+* I was blown away by Jacob Kaplan-Moss's keynote,
   [I Don't Deserve to be Here][10]. Jacob talks about how the mythical
-  "10X Programmer" stereotype creates an barrier to entry into the field of
+  "10X Programmer" stereotype creates a barrier to entry into the field of
   software engineering and draws comparisons that reinforce how ridiculous this
   idea really is. Highly recommended!
 
@@ -71,16 +71,16 @@ much as we did!
   in Python, Guido makes it crystal clear that this new addition is completely
   optional and being added to aid teams working on large Python code bases.
 
-* That Docker is so hot right now, that I couldn't pass up on checking out
+* Docker is so hot right now, so I couldn't pass up on checking out
   [Fire your supervisord: running Python apps on CoreOS][14] by Dan Callahan.
-  But be warned, this isn't a tutorial on Docker, but an introduction into the
-  world of [CoreOS][15]. So if you've got a solid understanding of Docker, but
+  But be warned: this isn't a tutorial on Docker, but an introduction into the
+  world of [CoreOS][15]. So, if you've got a solid understanding of Docker but
   want to understand how you can deploy it in production, this is a must watch.
 
 
 ## Conclusion
 
-So here is to another great year of innovation, talks, and programming in the
+Here's to another great year of innovation, talks, and programming in the
 Python community. See you in [Portland][9] at next year's conference!
 
 [1]: http://us.pycon.org/2015/
