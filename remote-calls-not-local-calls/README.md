@@ -25,3 +25,5 @@
 [3]: http://techblog.netflix.com/2011/12/making-netflix-api-more-resilient.html
 [4]: https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern
 [5]: https://vimeo.com/33359539
+[6]: https://github.com/Netflix/Hystrix
+[7]: https://github.com/rubyist/circuitbreaker
