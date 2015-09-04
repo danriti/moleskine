@@ -1,5 +1,14 @@
 # Remote Calls != Local Calls: Graceful Degradation when Services Fail
 
+## Reviewer Comments:
+
+- "No discussions on this yet.  Please provide code examples.  You may also want
+   to discuss toolsets to use (Hystrix, etc.)."
+- "I really like the idea of presenting good patterns (as distinguished from
+   "best practices"). Would attend this."
+- "Interesting topic!  Great to see a talk that focuses on recovery/graceful
+   failure rather than preventing failure."
+
 ## Release It Quotes
 
 - "Develop a recovery-oriented mind-set." (89)
