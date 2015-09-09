@@ -89,7 +89,8 @@
 
 - Involve the system's stakeholders when deciding how to handle remote calls
   that fail
--
+- Use timeouts where it makes sense
+- Explore adopting the circuit breaker pattern
 
 ### Questions?
 
