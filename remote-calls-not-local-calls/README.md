@@ -107,3 +107,4 @@
 [10]: http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions
 [11]: https://twitter.com/PHP_CEO/status/629652685231390721
 [12]: https://en.wikipedia.org/wiki/Antifragility
+[13]: https://github.com/Netflix/Hystrix/wiki
