@@ -48,6 +48,11 @@
 - introduce the techniques (timeouts, circuit breaker)
 - introduce the demo application
     - data requirements (user is mandatory, time is nice to have)
+- to keep things focused, we're going to talk about what happens if our time
+  services fails
+- as an example, lets assume after discussing with our stakeholders, we've
+  determined that when the time service is unavailable, we will simply display
+  'Unavailable' to the user
 
 ### Timeouts
 
@@ -93,6 +98,41 @@
 - Explore adopting the circuit breaker pattern
 
 ### Questions?
+
+## Notes
+
+### Dan
+
+- [x] poos => flaming poos?
+- [x] what protocol does the app communicate over and what does each of these services do?  brief overview of app’s purpose, functionality, and communication protocols
+- [x] short-circuit is private or missing repo
+- [ ] Response time bound to timeout value
+    - what if we’re calling timeout multiple times
+    - Still providing load to unhealthy service, why is this bad
+- [ ] Go straight from timeout to circuit breaker—what about retries?
+- [ ] Who is michael nygard
+- [ ] How does pybreaker keep track of state across requests?  What about when there’s multiple threads/procs?
+    - Walk through the circuit breaker example a bit faster maybe
+- [ ] Bulkhead?
+- [ ] retries?
+- [ ] describe failures?
+- [x] describe infrastructure further
+- [x] talk about stakeholders
+
+### Rob
+
+- [ ] present degrading from the "client" perspective
+- [ ] what other patterns/techniques exist? (9)
+    - "handful of other approaches to tackle the problem."
+    - "why are timeout/cbp easy to adopt?"
+- [ ] highlight terminal get requests (17)
+- [ ] engineering vs presenting graceful degradation (19)
+    - explain the benefits (fail fast, suck less)
+- [ ] point out time service exception because client lib gives up (27)
+- [ ] explain more details to come on cbp (31)
+    - "we will step through this in more detail in a moment"
+- [ ] talk about terminals (46)
+- [ ] we are hiring
 
 
 [1]: https://github.com/danielfm/pybreaker
