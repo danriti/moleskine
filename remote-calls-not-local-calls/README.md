@@ -134,6 +134,17 @@
 - [ ] talk about terminals (46)
 - [ ] we are hiring
 
+### Geoff
+
+- they force an error when a service is not responsive enough.
+- you talk pretty generally about a class of problems — external services that might go down
+- each of these solutions is appropriate to a particular set of circumstances
+- i would say that retries are good for situations where extra latency is acceptable if a recovery provides more value
+- when you're selecting a pattern, you have to figure out how it fits, how it models onto the problem domain you're trying to solve
+- and so there are characteristics of the pattern's behavior that indicate a good or poor fit
+- a CB fits really well as a general-purpose stopgap. it has some downsides, like the flapping behavior for underprovisioned resources
+- it's not suitable for situations where you really want to try best effort to reach the service, whether because you have a critical payload or because you cant' function without the service's input
+
 
 [1]: https://github.com/danielfm/pybreaker
 [2]: https://github.com/edgeware/python-circuit
