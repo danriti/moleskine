@@ -145,6 +145,13 @@
 - a CB fits really well as a general-purpose stopgap. it has some downsides, like the flapping behavior for underprovisioned resources
 - it's not suitable for situations where you really want to try best effort to reach the service, whether because you have a critical payload or because you cant' function without the service's input
 
+## Crowd Feedback
+
+- Multi-process environment?
+    - One circuit breaker per service, per process
+    - "Otherwise you know have two distributed computing problems"
+- Sequential order to service requests?
+
 
 [1]: https://github.com/danielfm/pybreaker
 [2]: https://github.com/edgeware/python-circuit
