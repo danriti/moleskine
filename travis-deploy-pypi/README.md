@@ -58,12 +58,7 @@ to go something like this:
 
 This gives me the flexibility to *not* have to have release specific branches
 and alters the "annoying" parts of my previous process by automating the deploy
-to both PyPI environments. So lets get started!
-
-## Deploy
-
-- state assumptions
-- do it
+to both PyPI environments.
 
 So before we begin, I just want to state a couple of assumptions:
 
@@ -72,10 +67,56 @@ So before we begin, I just want to state a couple of assumptions:
 - You're familiar with Travis CI
 
 If any of these are a foreign topic for you, I'd suggest doing some more
-reading on those topics before continuing. For the rest, lets continue.
+reading on those topics before continuing. For the rest, lets get started!
 
-So the first thing we want to do is update our `.travis.yml` file to include
+## Deploy to Test PyPI
+
+- add details about interesting yaml keys/values
+
+The first thing we want to do is update our `.travis.yml` file to include
 a deploy to Test PyPI, our staging environment.
+
+```yaml
+deploy:
+  - provider: pypi
+    distributions: sdist
+    server: https://testpypi.python.org/pypi
+    user: "Dan.Riti"
+    password: "plain-text-password"
+    on:
+      branch: master
+      condition: "$TRAVIS_PYTHON_VERSION == 2.7"
+```
+
+So before you freak out about the plain text password, rest assured that Travis
+provides a way to [encrypt][9] your password using their command line client:
+
+```bash
+$ travis encrypt deploy.password
+Please add the following to your .travis.yml file:
+
+  secure: "<encrypted-password-string>"
+
+```
+
+So now we simply update our `.travis.yml` file to remove the plain text password
+and include now fancy new secure password:
+
+
+```yaml
+deploy:
+  - provider: pypi
+    distributions: sdist
+    server: https://testpypi.python.org/pypi
+    user: "Dan.Riti"
+    password:
+      secure: "<encrypted-password-string>"
+    on:
+      branch: master
+      condition: "$TRAVIS_PYTHON_VERSION == 2.7"
+```
+
+## Release to PyPI
 
 [1]: https://pypi.python.org/pypi/python-traceview/
 [2]: https://pypi.python.org/
@@ -85,3 +126,4 @@ a deploy to Test PyPI, our staging environment.
 [6]: https://travis-ci.org/danriti/python-traceview
 [7]: https://testpypi.python.org/pypi
 [8]: https://github.com/danriti/python-traceview/releases
+[9]: https://github.com/travis-ci/travis.rb#encrypt
