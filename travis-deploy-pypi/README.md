@@ -189,7 +189,8 @@ The major differences are:
   commits
 
 Continuing on the assumption that we're doing a release, now all I have to do is
-fill out the Github release form to create a new release.
+fill out the Github release form to create a new release (which will
+automatically add a tagged commit):
 
 ![Github Release][18]
 
@@ -197,16 +198,18 @@ And by simply clicking "Publish Release", Travis does the rest of the
 [work][14]:
 
 ```bash
+Installing deploy dependencies
+Preparing deploy
 Deploying application
-
 ...
-
 Uploading distributions to https://pypi.python.org/pypi
 ```
 
+And now my brand new release is on PyPI and available to users. Now that was
+easy!
+
 ![PyPI release][19]
 
-Now that was an easy release!
 
 [1]: https://pypi.python.org/pypi/python-traceview/
 [2]: https://pypi.python.org/
