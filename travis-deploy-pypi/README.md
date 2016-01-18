@@ -1,4 +1,4 @@
-# Travis meets PyPI
+# PyPI deployment with Travis CI
 
 The TraceView team has added the ability to delete applications to our
 Application Management API, so now users are enabled to programmatically delete
@@ -22,7 +22,7 @@ Well, it turns out that the answer is quite simple with [Travis CI][4], a
 continuous integration service used to build and test projects. So lets take a
 closer look at how to get started!
 
-## Process Delta
+## Release process changes
 
 As it turns out, python-traceview is already [using][5] Travis CI, but only for
 [running tests][6] against changes in the repository. So before we get into
@@ -61,7 +61,7 @@ So before we begin, I'd like to state a few assumptions:
 If any of these are a foreign topic for you, I'd suggest doing some more
 reading on those topics before continuing. For the rest, lets get started!
 
-## Deploy to Test PyPI
+## Deploying to Test PyPI
 
 The first thing we want to do is update our `.travis.yml` file to include
 a deploy configuration for Test PyPI (which we are treating as our staging
@@ -94,7 +94,7 @@ the following about my example above:
   [Python versions][15], so I only want to the deploy to occur once.
 
 Great, so lets talk about passwords next. Travis provides the ability to
-[encrypt][9] *any* sensitive value using the `travis` [command line client][16].
+[encrypt][9] *any* sensitive value using the [`travis`][16] command line client.
 So in our case, we want to generate an encrypted value for our PyPI password.
 Once you have the command line client setup, you can simply run the following
 command:
@@ -138,6 +138,7 @@ Installing deploy dependencies
 Preparing deploy
 Deploying application
 ...
+Uploading distributions to https://testpypi.python.org/pypi
 ```
 
 And if I examine the logs for the Python 3.X builds, I'll see the following
@@ -145,18 +146,20 @@ And if I examine the logs for the Python 3.X builds, I'll see the following
 those versions:
 
 ```bash
+...
 Skipping a deployment with the pypi provider because a custom condition was not met
+...
 ```
 
-Pretty cool! So as you would expect, my new version is now sitting on Test PyPI,
+Pretty cool! So as you would expect, my [new version][13] is now sitting on Test PyPI,
 ready for me to verify:
 
-[https://testpypi.python.org/pypi/python-traceview][13]
+![Test PyPI][17]
 
 Assuming my verification of the release candidate is looking great, lets move
 onto releasing to production PyPI.
 
-## Release to PyPI
+## Deploying to PyPI
 
 Releasing to production PyPI through Travis is as simple as adding a second
 deploy configuration. We can follow the steps we outlined above to add the
@@ -188,9 +191,10 @@ The major differences are:
 Continuing on the assumption that we're doing a release, now all I have to do is
 fill out the Github release form to create a new release.
 
-<screenshot>
+![Github Release][18]
 
-And simply click submit, Travis does the rest of the [work][14]:
+And by simply clicking "Publish Release", Travis does the rest of the
+[work][14]:
 
 ```bash
 Deploying application
@@ -199,6 +203,8 @@ Deploying application
 
 Uploading distributions to https://pypi.python.org/pypi
 ```
+
+![PyPI release][19]
 
 Now that was an easy release!
 
@@ -218,3 +224,6 @@ Now that was an easy release!
 [14]: https://travis-ci.org/danriti/python-traceview/jobs/103211151#L483-L526
 [15]: https://github.com/danriti/python-traceview/blob/54e08dfbbeb323de26634b9535f68fcbdb0acf13/.travis.yml#L2-L7
 [16]: https://github.com/travis-ci/travis.rb
+[17]: https://raw.githubusercontent.com/danriti/moleskine/master/travis-deploy-pypi/images/01.png
+[18]: https://raw.githubusercontent.com/danriti/moleskine/master/travis-deploy-pypi/images/02.png
+[19]: https://raw.githubusercontent.com/danriti/moleskine/master/travis-deploy-pypi/images/03.png
