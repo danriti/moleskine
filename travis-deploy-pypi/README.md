@@ -27,9 +27,9 @@ closer look at how to get started!
 As it turns out, python-traceview is already [using][5] Travis CI, but only for
 [running tests][6] against changes in the repository. So before we get into
 using Travis CI for deployment, lets talk about how we want to augment the
-release process. Since the python-traceview library uses Github, we using pull
-requests to introduce changes to the library. Thus, I want to update the process
-to go something like this:
+release process. Since the python-traceview library uses Github, we are using
+pull requests to introduce changes to the library. Thus, I want to update the
+process to go something like this:
 
 1. Developer submits a pull request against the repository that introduces a
    new feature or bug fix
@@ -41,7 +41,7 @@ to go something like this:
    `master`
     * This allows me to use the Test PyPI site as a "staging" environment, where
       I can manually ensure that everything is good with the package
-      (documentation, release history, etc).
+      (documentation, release history, etc)
 5. Once I've determined that my "release candidate" is looking good on `master`,
    I can simply create a new [Github release][8], which will add a version tag
    to the repository
@@ -54,9 +54,9 @@ deploy to both PyPI environments.
 
 So before we begin, I'd like to state a few assumptions:
 
-- You're familiar with PyPI
-- You're familiar with how a standard Python package is setup
-- You're familiar with Travis CI
+- You are familiar with PyPI
+- You are familiar with how a standard Python package is setup
+- You are familiar with Travis CI
 
 If any of these are a foreign topic for you, I'd suggest doing some more
 reading on those topics before continuing. For the rest, lets get started!
@@ -87,16 +87,17 @@ the following about my example above:
 
 * The `server` setting allows us to override the default and deploy to the
   Test PyPI package index
-* The `on` configuration allows us to set conditionals on when we want to
+* The `on` configuration allows us to set conditionals for when we want to
   release. So in this case, we're stating to *only* release to Test PyPI when
   the branch is `master`, there is no tag, and the Python version is `2.7`. We
   are adding the Python version because my Travis build runs against *multiple*
-  Python versions, so I only want to the deploy to occur once.
+  [Python versions][15], so I only want to the deploy to occur once.
 
 Great, so lets talk about passwords next. Travis provides the ability to
-[encrypt][9] *any* sensitive value using their command line client. So in our
-case, we want to generate an encrypted value for our PyPI password. Once you
-have the command line client setup, you can simply run the following command:
+[encrypt][9] *any* sensitive value using the `travis` [command line client][16].
+So in our case, we want to generate an encrypted value for our PyPI password.
+Once you have the command line client setup, you can simply run the following
+command:
 
 ```bash
 $ travis encrypt 'plain-text-password'
@@ -106,7 +107,8 @@ Please add the following to your .travis.yml file:
 
 ```
 
-So we can now update our `.travis.yml` to include our secure value:
+And Travis will give us an encrypted string to use instead of our plain text
+password. So now we can update our `.travis.yml` to include our secure password:
 
 ```yaml
 deploy:
@@ -123,7 +125,7 @@ deploy:
       condition: $TRAVIS_PYTHON_VERSION = "2.7"
 ```
 
-This is nice, because I can let Travis handle the security and I'm not worried
+This is nice because I can let Travis handle the security and I'm not worried
 about exposing any sensitive information, even in a publicly available
 repository.
 
@@ -138,9 +140,9 @@ Deploying application
 ...
 ```
 
-And if I example the logs for the builds for any of my Python 3.X versions, I'll
-see the following [log output][12] indicating that my `on` conditional is prevent
-a deploy for that version:
+And if I examine the logs for the Python 3.X builds, I'll see the following
+[log output][12] indicating that my `on` conditional is preventing a deploy for
+those versions:
 
 ```bash
 Skipping a deployment with the pypi provider because a custom condition was not met
@@ -154,16 +156,11 @@ ready for me to verify:
 Assuming my verification of the release candidate is looking great, lets move
 onto releasing to production PyPI.
 
-
 ## Release to PyPI
-
-Releasing to production PyPI though Travis is as simple as adding a second
-deploy configuration:
 
 Releasing to production PyPI through Travis is as simple as adding a second
 deploy configuration. We can follow the steps we outlined above to add the
-production settings:
-
+production specific configuration:
 
 ```yaml
 deploy:
@@ -219,3 +216,5 @@ Now that was an easy release!
 [12]: https://travis-ci.org/danriti/python-traceview/jobs/103210545#L193
 [13]: https://testpypi.python.org/pypi/python-traceview
 [14]: https://travis-ci.org/danriti/python-traceview/jobs/103211151#L483-L526
+[15]: https://github.com/danriti/python-traceview/blob/54e08dfbbeb323de26634b9535f68fcbdb0acf13/.travis.yml#L2-L7
+[16]: https://github.com/travis-ci/travis.rb
