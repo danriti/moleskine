@@ -205,17 +205,10 @@ Deploying application
 Uploading distributions to https://pypi.python.org/pypi
 ```
 
-And now my brand new release is on PyPI and available to users. Now that was
-easy!
+And now my brand new release is on PyPI and available to users. Automation is
+a beautiful thing.
 
 ![PyPI release][19]
-
-References:
-
-1. [Travis CI - Deployment](https://docs.travis-ci.com/user/deployment)
-2. [Travis CI - PyPI Deployment](https://docs.travis-ci.com/user/deployment/pypi)
-3. [Travis CI - Building a Python Project](https://docs.travis-ci.com/user/languages/python/)
-4. [Travis CI - Environment Variables](https://docs.travis-ci.com/user/environment-variables/)
 
 [1]: https://pypi.python.org/pypi/python-traceview/
 [2]: https://pypi.python.org/
