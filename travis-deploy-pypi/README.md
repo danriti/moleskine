@@ -37,15 +37,15 @@ process to go something like this:
    indicating a passing or failing build
 3. Once the build is passing and the feature is accepted, the pull request is
    merged into `master`
-4. Have Travis CI automatically deploys to [Test PyPI][7] on *any* change to
+4. Travis CI automatically deploys to [Test PyPI][7] on *any* change to
    `master`
     * This allows me to use the Test PyPI site as a "staging" environment, where
       I can manually ensure that everything is good with the package
       (documentation, release history, etc)
-5. Once I've determined that my "release candidate" is looking good on `master`,
-   I can simply create a new [Github release][8], which will add a version tag
+5. Once I've determined that my "release candidate" is looking good, I can
+   simply create a new [Github release][8], which will add a version tag
    to the repository
-6. Have Travis CI automatically deploys to "production" PyPI on *any* tagged
+6. Travis CI automatically deploys to "production" PyPI on *any* tagged
    commit, effectively making the new release available to the public
 
 This gives me the flexibility to *not* have to have release specific branches
@@ -210,6 +210,12 @@ easy!
 
 ![PyPI release][19]
 
+References:
+
+1. [Travis CI - Deployment](https://docs.travis-ci.com/user/deployment)
+2. [Travis CI - PyPI Deployment](https://docs.travis-ci.com/user/deployment/pypi)
+3. [Travis CI - Building a Python Project](https://docs.travis-ci.com/user/languages/python/)
+4. [Travis CI - Environment Variables](https://docs.travis-ci.com/user/environment-variables/)
 
 [1]: https://pypi.python.org/pypi/python-traceview/
 [2]: https://pypi.python.org/
