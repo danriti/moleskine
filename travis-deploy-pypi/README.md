@@ -1,6 +1,6 @@
 # PyPI deployment with Travis CI
 
-The TraceView team has added the ability to delete applications to our
+The TraceView team has added the ability to [delete applications][20] to our
 Application Management API, so now users are enabled to programmatically delete
 and clean up applications in TraceView that are no longer in use. Along with
 this helpful addition, I've just released an updated version of the
@@ -229,3 +229,4 @@ a beautiful thing.
 [17]: https://raw.githubusercontent.com/danriti/moleskine/master/travis-deploy-pypi/images/01.png
 [18]: https://raw.githubusercontent.com/danriti/moleskine/master/travis-deploy-pypi/images/02.png
 [19]: https://raw.githubusercontent.com/danriti/moleskine/master/travis-deploy-pypi/images/03.png
+[20]: http://dev.appneta.com/docs/api-v2/app.html#deleting-apps
